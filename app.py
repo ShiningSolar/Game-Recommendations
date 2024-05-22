@@ -2,29 +2,32 @@ import pickle
 import streamlit as st
 import numpy as np
 
-st.header("Book Recommender System using Machine Learning")
-model = pickle.load(open('artifacts/model.pkl', 'rb'))
-books_name = pickle.load(open('artifacts/books_name.pkl', 'rb'))
-final_rating = pickle.load(open('artifacts/final_rating.pkl', 'rb'))
-book_pivot = pickle.load(open('artifacts/book_pivot.pkl', 'rb'))
+st.header("Game Recommender System using Machine Learning")
+model = pickle.load(open('model.pkl', 'rb'))
+#books_name = pickle.load(open('artifacts/books_name.pkl', 'rb'))
+games = pickle.load(open('games.pkl', 'rb'))
+game_pivot = pickle.load(open('game_pivot.pkl', 'rb'))
 
-def fecth_poster(suggestion):
-    book_name = []
-    ids_index = []
-    poster_url = []
+def fecth_image(df):
+    #list untuk menyimpan url image setiap resep
+    game_image = []
+    game_name = []
+    #game_id =[]
+    
+    for item in df['title']:
+        #mendapatkan index berdasarkan nama resep
+        index = df.loc[df['title'] == item].index[0]
+        game_name.append(str(item))
+        url = df.loc[index,'Header image']
+        #url = url[0] 
+        #mengecek apakah url image lebih dari 1 item
+        #if len(url) > 1:
+        #    url = url[0]        #menyimpan url pada list
+        game_image.append(str(url))
+        
+    #recipe_image_string = list(map(str, recipe_image))
 
-    for book_id in suggestion:
-        book_name.append(book_pivot.index[book_id])
-
-    for name in book_name[0]:
-        ids = np.where(final_rating['title'] == name)[0][0]
-        ids_index.append(ids)
-
-    for idx in ids_index:
-        url = final_rating.iloc[idx]['img_url']
-        poster_url.append(url)
-
-    return poster_url
+    return game_image, game_name
 
 def recommend_books(book_name):
     book_list = []
