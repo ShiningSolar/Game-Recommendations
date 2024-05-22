@@ -25,7 +25,7 @@ def fecth_image(df):
         game_image.append(str(url))
     return game_image, game_name
 
-def generate_knn_recommendations(item name, df, knn_model, n_neighbors=5):
+def generate_knn_recommendations(item_name, df, knn_model, n_neighbors=5):
     item_id = df[df['title'] == item_name]['app_id'].values[0]
     item_index = game_sparse[game_sparse['app_id'] == item_id].index[0]
     distances, indices = knn_model.kneighbors(game_sparse[item_index], n_neighbors=n_neighbors + 1)
