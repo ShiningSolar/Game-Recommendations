@@ -1,12 +1,15 @@
 import pickle
 import streamlit as st
+import pandas as pd
 import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.neighbors import NearestNeighbors
 
 st.header("Game Recommender System using Machine Learning")
 model = pickle.load(open('model.pkl', 'rb'))
 #books_name = pickle.load(open('artifacts/books_name.pkl', 'rb'))
 games = pickle.load(open('games.pkl', 'rb'))
-game_pivot = pickle.load(open('game_pivot.pkl', 'rb'))
+game_sparse = pickle.load(open('game_sparse.pkl', 'rb'))
 
 def fecth_image(df):
     #list untuk menyimpan url image setiap resep
@@ -19,75 +22,42 @@ def fecth_image(df):
         index = df.loc[df['title'] == item].index[0]
         game_name.append(str(item))
         url = df.loc[index,'Header image']
-        #url = url[0] 
-        #mengecek apakah url image lebih dari 1 item
-        #if len(url) > 1:
-        #    url = url[0]        #menyimpan url pada list
         game_image.append(str(url))
-        
-    #recipe_image_string = list(map(str, recipe_image))
-
     return game_image, game_name
 
-def recommend_books(book_name):
-    book_list = []
-    book_id = np.where(book_pivot.index == book_name)[0][0]
-    distance, suggestion = model.kneighbors(book_pivot.iloc[book_id,:].values.reshape(1,-1), n_neighbors = 11)
+def generate_knn_recommendations(item_id, df, knn_model, n_neighbors=5):
+    item_index = df[df['app_id'] == item_id].index[0]
+    distances, indices = knn_model.kneighbors(game_sparse[item_index], n_neighbors=n_neighbors + 1)
+    similar_items = df.iloc[indices[0][1:]]  # Menghapus item itu sendiri dari hasil
+    game_image, game_name = fecth_image(similar_items)
+    return similar_items, game_image, game_name
 
-    poster_url = fecth_poster(suggestion)
-
-    for i in range(len(suggestion)):
-        books = book_pivot.index[suggestion[i]]
-        for j in books:
-            book_list.append(j)
-
-    return book_list, poster_url
-
-selected_books = st.selectbox(
+selected_game = st.selectbox(
     "Type or select a book",
-    books_name
+    games['title']
 )
 
 if st.button('Show Recommendation'):
-    recommended_books, poster_url = recommend_books(selected_books)
-    col1, col2, col3, col4, col5, col6, col7, col8, col9, col10 = st.columns(10)
+    recommendations, game_image, game_name = generate_knn_recommendations(selected_game, games, model)
+    
+    col1, col2, col3, col4, col5 = st.columns(5)
 
     with col1:
-        st.text(recommended_books[1])
-        st.image(poster_url[1])
+        st.text(game_name[0])
+        st.image(game_image[0])
 
     with col2:
-        st.text(recommended_books[2])
-        st.image(poster_url[2])
+        st.text(game_name[1])
+        st.image(game_image[1])
 
     with col3:
-        st.text(recommended_books[3])
-        st.image(poster_url[3])
+        st.text(game_name[2])
+        st.image(game_image[2])
 
     with col4:
-        st.text(recommended_books[4])
-        st.image(poster_url[4])
+        st.text(game_name[3])
+        st.image(game_image[3])
 
     with col5:
-        st.text(recommended_books[5])
-        st.image(poster_url[5]) 
-
-    with col6:
-        st.text(recommended_books[6])
-        st.image(poster_url[6])
-
-    with col7:
-        st.text(recommended_books[7])
-        st.image(poster_url[7])
-        
-    with col8:
-        st.text(recommended_books[8])
-        st.image(poster_url[8]) 
-        
-    with col9:
-        st.text(recommended_books[9])
-        st.image(poster_url[9]) 
-
-    with col10:
-        st.text(recommended_books[10])
-        st.image(poster_url[10]) 
+        st.text(game_name[4])
+        st.image(game_image[4]) 
