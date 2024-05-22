@@ -26,7 +26,7 @@ def fecth_image(df):
     return game_image, game_name
 
 def generate_knn_recommendations(item_id, df, knn_model, n_neighbors=5):
-    item_index = df[df['app_id'] == item_id].index[0]
+    item_index = df[df['title'] == item_id].index[0]
     distances, indices = knn_model.kneighbors(game_sparse[item_index], n_neighbors=n_neighbors + 1)
     similar_items = df.iloc[indices[0][1:]]  # Menghapus item itu sendiri dari hasil
     game_image, game_name = fecth_image(similar_items)
