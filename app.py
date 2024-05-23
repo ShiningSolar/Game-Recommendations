@@ -47,28 +47,7 @@ if st.button('Show Recommendation'):
     cols = st.columns(5)
     index=0
     for col in cols:
-        data = recommendations[index]
-        col.text(data[0])
-        col.image(data[1])
-                  
-    '''
-    with col1:
-        st.text(game_name[0])
-        st.image(game_image[0])
-
-    with col2:
-        st.text(game_name[1])
-        st.image(game_image[1])
-
-    with col3:
-        st.text(game_name[2])
-        st.image(game_image[2])
-
-    with col4:
-        st.text(game_name[3])
-        st.image(game_image[3])
-
-    with col5:
-        st.text(game_name[4])
-        st.image(game_image[4]) 
-    '''
+       data = recommendations[index]
+       col.text(data[0])
+       col.image(data[1])
+       index= index + 1
