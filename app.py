@@ -36,22 +36,12 @@ def recommend(game_name):
         data.append(item)
     return data
 
-'''
-def generate_knn_recommendations(item_name, df, knn_model, n_neighbors=5):
-    item_id = df[df['title'] == item_name]['app_id'].values[0]
-    item_index = df[df['app_id'] == item_id].index[0]
-    distances, indices = knn_model.kneighbors(df[item_index], n_neighbors=n_neighbors + 1)
-    similar_items = df.iloc[indices[0][1:]]  # Menghapus item itu sendiri dari hasil
-    game_image, game_name = fecth_image(similar_items)
-    return similar_items, game_image, game_name
-'''
 selected_game = st.selectbox(
     "Type or select a game",
     games['title']
 )
 
 if st.button('Show Recommendation'):
-    #recommendations, game_image, game_name = generate_knn_recommendations(selected_game, games, model)
     recommendations = recommend(selected_game)
     #col1, col2, col3, col4, col5 = st.columns(5)
     cols = st.columns(5)
