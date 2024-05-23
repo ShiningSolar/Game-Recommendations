@@ -7,33 +7,35 @@ from sklearn.neighbors import NearestNeighbors
 
 
 st.header("Game Recommender System using Machine Learning")
-model = pickle.load(open('model.pkl', 'rb'))
+#model = pickle.load(open('model.pkl', 'rb'))
 #books_name = pickle.load(open('artifacts/books_name.pkl', 'rb'))
 games = pickle.load(open('games.pkl', 'rb'))
-game_sparse = pickle.load(open('game_sparse.pkl', 'rb'))
-item_similarity = pickle.load(open('item_similarity.pkl', 'rb'))
-
-distances, indices = model.kneighbors(game_sparse.T, n_neighbors=game_sparse.shape[1])
-
-def fecth_image(df):
-    #list untuk menyimpan url image setiap resep
-    game_image = []
-    game_name = []
-    for item in df:
-        #mendapatkan index berdasarkan nama resep
-        index = games.loc[games['app_id'] == item].index[0]
-        title = games.loc[games['app_id'] == item]['title'].values[0]
-        game_name.append(str(title))
-        url = games.loc[index,'Header image']
-        game_image.append(str(url))
-    return game_image, game_name
+#game_sparse = pickle.load(open('game_sparse.pkl', 'rb'))
+similarity_score = pickle.load(open('similarity_score.pkl', 'rb'))
+   
+def recommend(game_name):
     
-def recommend_games_based_on_item(item_name, indices, item_similarity_df, top_n=5):
-    game_id = games[games['title'] == item_name]['app_id'].values[0]
-    similar_indices = indices[game_id][1:top_n+1]
-    similar_items = item_similarity_df.columns[similar_indices]
-    game_image, game_name = fecth_image(similar_items)
-    return similar_items, game_image, game_name
+    game_id = games[games['title'] == game_name]['app_id'].values[0]
+    game_idx = games[games['app_id'] == game_id].index[0]
+    
+    # Sorts the similarities for the book_name in descending order
+    similar_games = sorted(list(enumerate(similarity_score[game_idx])),key=lambda x:x[1], reverse=True)[1:6]
+    
+    # To return result in list format
+    data = []
+    
+    for index,similarity in similar_games:
+        item = []
+        # Get the book details by index
+        temp_df = games.loc[index]
+
+        # Only add the title, author, and image-url to the result
+        item.append(temp_df['title'])
+        item.append(temp_df['header_image'])
+        
+        data.append(item)
+    return data
+
 '''
 def generate_knn_recommendations(item_name, df, knn_model, n_neighbors=5):
     item_id = df[df['title'] == item_name]['app_id'].values[0]
@@ -50,9 +52,16 @@ selected_game = st.selectbox(
 
 if st.button('Show Recommendation'):
     #recommendations, game_image, game_name = generate_knn_recommendations(selected_game, games, model)
-    recommendations_game, game_image, game_name = recommend_games_based_on_item(selected_game, indices, item_similarity)
-    col1, col2, col3, col4, col5 = st.columns(5)
-
+    recommendations = recommend(selected_game)
+    #col1, col2, col3, col4, col5 = st.columns(5)
+    cols = st.columns(5)
+    index=0
+    for col in cols:
+        data = recommendations[index]
+        col.text(data[0])
+        col.image(data[1]
+                  
+    '''
     with col1:
         st.text(game_name[0])
         st.image(game_image[0])
@@ -72,3 +81,4 @@ if st.button('Show Recommendation'):
     with col5:
         st.text(game_name[4])
         st.image(game_image[4]) 
+    '''
