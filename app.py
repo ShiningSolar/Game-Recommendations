@@ -49,7 +49,7 @@ if st.button('Show Recommendation'):
     for col in cols:
         data = recommendations[index]
         col.text(data[0])
-        col.image(data[1]
+        col.image(data[1])
                   
     '''
     with col1:
