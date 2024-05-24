@@ -42,12 +42,36 @@ selected_game = st.selectbox(
 )
 
 if st.button('Show Recommendation'):
-    recommendations = recommend(selected_game)
-    #col1, col2, col3, col4, col5 = st.columns(5)
-    cols = st.columns(5)
-    index=0
+   recommendations = recommend(selected_game)
+   #col1, col2, col3, col4, col5 = st.columns(5)
+   cols = st.columns(5)
+   row1, row2, row3, row4, row5 = st.rows(5)
+   with row1:
+      data = recommendations[0]
+      st.image(data[1])
+      st.text(data[0])
+   with row2:
+      data = recommendations[1]
+      st.image(data[1])
+      st.text(data[0])
+   with row3:
+      data = recommendations[2]
+      st.image(data[1])
+      st.text(data[0])
+   with row4:
+      data = recommendations[3]
+      st.image(data[1])
+      st.text(data[0])
+   with row5:
+      data = recommendations[4]
+      st.image(data[1])
+      st.text(data[0])
+      
+def unused(cols, recommendations) :
+   index=0
     for col in cols:
        data = recommendations[index]
        col.text(data[0])
        col.image(data[1])
        index= index + 1
+   
