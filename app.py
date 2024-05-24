@@ -44,8 +44,8 @@ selected_game = st.selectbox(
 if st.button('Show Recommendation'):
    recommendations = recommend(selected_game)
    #col1, col2, col3, col4, col5 = st.columns(5)
-   cols = st.columns(5)
-   row1, row2, row3, row4, row5 = st.rows(5)
+   #cols = st.columns(5)
+   row1, row2, row3, row4, row5 = st.columns(5)
    with row1:
       data = recommendations[0]
       st.image(data[1])
