@@ -49,23 +49,34 @@ if st.button('Show Recommendation'):
    with st.container(border = True):
       data = recommendations[0]
       st.image(data[1])
-      st.text(data[0])
+      title = data[0]
+      with st.popover(title):
+         st.text("test")
+      #st.text(data[0])
    with st.container(border = True):
       data = recommendations[1]
       st.image(data[1])
-      st.text(data[0])
+      with st.popover(title):
+         st.text("test")
+      #st.text(data[0])
    with st.container(border = True):
       data = recommendations[2]
       st.image(data[1])
-      st.text(data[0])
+      with st.popover(title):
+         st.text("test")
+      #st.text(data[0])
    with st.container(border = True):
       data = recommendations[3]
       st.image(data[1])
-      st.text(data[0])
+      with st.popover(title):
+         st.text("test")
+      #st.text(data[0])
    with st.container(border = True):
       data = recommendations[4]
       st.image(data[1])
-      st.text(data[0])
+      with st.popover(title):
+         st.text("test")
+      #st.text(data[0])
       
 def unused(cols, recommendations) :
    index=0
