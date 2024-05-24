@@ -69,9 +69,9 @@ if st.button('Show Recommendation'):
       
 def unused(cols, recommendations) :
    index=0
-    for col in cols:
-       data = recommendations[index]
-       col.text(data[0])
-       col.image(data[1])
-       index= index + 1
+   for col in cols:
+      data = recommendations[index]
+      col.text(data[0])
+      col.image(data[1])
+      index= index + 1
    
