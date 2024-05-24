@@ -48,33 +48,37 @@ if st.button('Show Recommendation'):
    #row1, row2, row3, row4, row5 = st.popover
    with st.container(border = True):
       data = recommendations[0]
-      st.image(data[1])
+      st.image(data[1], use_container_width = True)
       title = data[0]
-      with st.popover(title):
+      with st.popover(title, use_container_width = True):
          st.text("test")
       #st.text(data[0])
    with st.container(border = True):
       data = recommendations[1]
-      st.image(data[1])
-      with st.popover(title):
+      st.image(data[1], use_container_width = True)
+      title = data[0]
+      with st.popover(title, use_container_width = True):
          st.text("test")
       #st.text(data[0])
    with st.container(border = True):
       data = recommendations[2]
-      st.image(data[1])
-      with st.popover(title):
+      st.image(data[1], use_container_width = True)
+      title = data[0]
+      with st.popover(title, use_container_width = True):
          st.text("test")
       #st.text(data[0])
    with st.container(border = True):
       data = recommendations[3]
-      st.image(data[1])
-      with st.popover(title):
+      st.image(data[1], use_container_width = True)
+      title = data[0]
+      with st.popover(title, use_container_width = True):
          st.text("test")
       #st.text(data[0])
    with st.container(border = True):
       data = recommendations[4]
-      st.image(data[1])
-      with st.popover(title):
+      st.image(data[1], use_container_width = True)
+      title = data[0]
+      with st.popover(title, use_container_width = True):
          st.text("test")
       #st.text(data[0])
       
