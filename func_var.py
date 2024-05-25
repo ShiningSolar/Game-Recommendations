@@ -60,7 +60,7 @@ def sorted_score_df(df):
 def most_popular_games():
    df = games
    n = 10 #number of games
-   list = sorted_score_df(df)
+   list = sorted_score_df(df).reset_index(drop = True)
    return list.iloc[0:10]
 
 def unused(cols, recommendations) :
