@@ -54,8 +54,8 @@ row2 = st.columns(5)
 list_popular = most_popular_games()
 
 index = 0
-for cols in row1 + row2:
-   cols[index].image(list_popular.loc[index,'header_image'])
-   cols[index].text(list_popular.loc[index,'title'])
+for col in row1 + row2:
+   col.image(list_popular.loc[index,'header_image'])
+   col.text(list_popular.loc[index,'title'])
    index = index + 1
 
