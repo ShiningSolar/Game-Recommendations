@@ -42,7 +42,7 @@ selected_game = st.selectbox(
    games_title['title'],
    index = None,
    placeholder = "Type or select a game",
-   label_visibility = "collapse"
+   label_visibility = "collapsed"
 )
 
 if st.button('Show Recommendation'):
