@@ -64,7 +64,7 @@ selected_game = st.selectbox(
 )
 
 if st.button('Show Recommendation'):
-   recommendations = recommend(selected_game)
+   recommendations = hybrid_recommendation(selected_game)
    data = recommendations
    with st.container(border = True):
       st.image(data.header_image[0], use_column_width = True)
