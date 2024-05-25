@@ -5,6 +5,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.neighbors import NearestNeighbors
 from func_var import games_title
 from func_var import hybrid_recommendation
+from func_var import most_popular_games
 
 st.header("Games Recommendation")
 
@@ -46,12 +47,15 @@ if st.button('Show Recommendation'):
       title = data.title[4]
       with st.popover(title, use_container_width = True):
          st.text("test")
-      
-def unused(cols, recommendations) :
-   index=0
-   for col in cols:
-      data = recommendations[index]
-      col.text(data[0])
-      col.image(data[1])
-      index= index + 1
-   
+
+st.title("Most popular games")
+row1 = st.columns(5)
+row2 = st.columns(5)
+list_popular = most_popular_games()
+
+index = 0
+for cols in row1 + row2:
+   cols[index].image(list_popular.loc[index,'header_image'])
+   cols[index].text(list_popular.loc[index,'title'])
+   index = index + 1
+
