@@ -12,7 +12,7 @@ st.header("Game Recommender System using Machine Learning")
 games = pickle.load(open('games.pkl', 'rb'))
 #game_sparse = pickle.load(open('game_sparse.pkl', 'rb'))
 similarity_score = pickle.load(open('similarity_score.pkl', 'rb'))
-games_title = games.sort_values(by='column1')
+games_title = games.sort_values(by='title')
    
 def recommend(game_name):
     
