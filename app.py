@@ -7,35 +7,53 @@ from sklearn.neighbors import NearestNeighbors
 
 
 st.header("Game Recommender System using Machine Learning")
-#model = pickle.load(open('model.pkl', 'rb'))
-#books_name = pickle.load(open('artifacts/books_name.pkl', 'rb'))
 games = pickle.load(open('games.pkl', 'rb'))
-#game_sparse = pickle.load(open('game_sparse.pkl', 'rb'))
-similarity_score = pickle.load(open('similarity_score.pkl', 'rb'))
-games_title = games.sort_values(by='title')
-   
-def recommend(game_name):
-    
-    game_id = games[games['title'] == game_name]['app_id'].values[0]
-    game_idx = games[games['app_id'] == game_id].index[0]
-    
-    # Sorts the similarities for the book_name in descending order
-    similar_games = sorted(list(enumerate(similarity_score[game_idx])),key=lambda x:x[1], reverse=True)[1:6]
-    
-    # To return result in list format
-    data = []
-    
-    for index,similarity in similar_games:
-        item = []
-        # Get the book details by index
-        temp_df = games.loc[index]
+games_sparse = pickle.load(open('urm_sparse.pkl', 'rb'))
+knn = pickle.load(open('knn.pkl', 'rb'))
+cosine_sim_content = pickle.load(open('cosine_sim_content.pkl', 'rb'))
 
-        # Only add the title, author, and image-url to the result
-        item.append(temp_df['title'])
-        item.append(temp_df['header_image'])
-        
-        data.append(item)
-    return data
+games_title = games.sort_values(by='title')
+
+# Function to get collaborative filtering similarity for a given game
+def get_collaborative_similarities(game_id, k=10):
+   game_idx = games[games['app_id'] == game_id].index[0]
+   game_vector = urm_sparse[game_idx, :]
+   distances, indices = knn.kneighbors(game_vector, n_neighbors=k)
+   return indices.flatten(), distances.flatten()
+
+# 4. Hybrid Filtering
+def hybrid_recommendation(input_game_title, k = 10):
+   # Find the game ID for the input title
+   input_game_id = games[games['title'] == input_game_title]['app_id'].values[0] 
+   input_game_idx = games[games['app_id'] == input_game_id].index[0]
+   #games[games['title'].str.contains(input_game_title, case=False)].iloc[0]['app_id']
+   
+   # Content-based similarity scores
+   content_sim_scores = list(enumerate(cosine_sim_content[input_game_idx]))
+   
+   # Collaborative similarity scores
+   collab_indices, collab_distances = get_collaborative_similarities(input_game_id, k+1)
+   collab_sim_scores = [(idx, 1 - dist) for idx, dist in zip(collab_indices, collab_distances)]
+   
+   # Normalize scores
+   max_content_score = max([score for _, score in content_sim_scores])
+   max_collab_score = max([score for _, score in collab_sim_scores])
+   content_sim_scores = [(idx, score / max_content_score) for idx, score in content_sim_scores]
+   collab_sim_scores = [(idx, score / max_collab_score) for idx, score in collab_sim_scores]
+   
+   # Combine scores with a weighted average
+   combined_scores = {}
+   for idx, score in content_sim_scores:
+      combined_scores[idx] = combined_scores.get(idx, 0) + 0.5 * score
+   for idx, score in collab_sim_scores:
+      combined_scores[idx] = combined_scores.get(idx, 0) + 0.5 * score
+   
+   # Sort and get top k recommendations
+   sorted_games = sorted(combined_scores.items(), key=lambda x: x[1], reverse=True)
+   recommended_game_indices = [idx for idx, _ in sorted_games[1:k+1]]
+   # Retrieve game titles
+   recommended_games = games.iloc[recommended_game_indices].reset_index(drop=True)
+   return recommended_games
 
 selected_game = st.selectbox(
    "Type or select a game",
@@ -47,44 +65,34 @@ selected_game = st.selectbox(
 
 if st.button('Show Recommendation'):
    recommendations = recommend(selected_game)
-   #col1, col2, col3, col4, col5 = st.columns(5)
-   #cols = st.columns(5)
-   #row1, row2, row3, row4, row5 = st.popover
+   data = recommendations
    with st.container(border = True):
-      data = recommendations[0]
-      st.image(data[1], use_column_width = True)
-      title = data[0]
+      st.image(data.header_image[0], use_column_width = True)
+      title = data.title[0]
       with st.popover(title, use_container_width = True):
          st.text("test")
-      #st.text(data[0])
+         
    with st.container(border = True):
-      data = recommendations[1]
-      st.image(data[1], use_column_width = True)
-      title = data[0]
+      st.image(data.header_image[1], use_column_width = True)
+      title = data.title[1]
       with st.popover(title, use_container_width = True):
          st.text("test")
-      #st.text(data[0])
+         
    with st.container(border = True):
-      data = recommendations[2]
-      st.image(data[1], use_column_width = True)
-      title = data[0]
+      st.image(data.header_image[2], use_column_width = True)
+      title = data.title[2]
       with st.popover(title, use_container_width = True):
          st.text("test")
-      #st.text(data[0])
    with st.container(border = True):
-      data = recommendations[3]
-      st.image(data[1], use_column_width = True)
-      title = data[0]
+      st.image(data.header_image[3], use_column_width = True)
+      title = data.title[3]
       with st.popover(title, use_container_width = True):
          st.text("test")
-      #st.text(data[0])
    with st.container(border = True):
-      data = recommendations[4]
-      st.image(data[1], use_column_width = True)
-      title = data[0]
+      st.image(data.header_image[4], use_column_width = True)
+      title = data.title[4]
       with st.popover(title, use_container_width = True):
          st.text("test")
-      #st.text(data[0])
       
 def unused(cols, recommendations) :
    index=0
