@@ -40,7 +40,7 @@ def recommend(game_name):
 selected_game = st.selectbox(
    "Type or select a game",
    games_title['title'],
-   index = 'none'
+   index = None
 )
 
 if st.button('Show Recommendation'):
