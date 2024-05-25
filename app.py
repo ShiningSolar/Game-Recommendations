@@ -17,7 +17,7 @@ games_title = games.sort_values(by='title')
 # Function to get collaborative filtering similarity for a given game
 def get_collaborative_similarities(game_id, k=10):
    game_idx = games[games['app_id'] == game_id].index[0]
-   game_vector = urm_sparse[game_idx, :]
+   game_vector = games_sparse[game_idx, :]
    distances, indices = knn.kneighbors(game_vector, n_neighbors=k)
    return indices.flatten(), distances.flatten()
 
