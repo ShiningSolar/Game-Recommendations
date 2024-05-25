@@ -52,6 +52,17 @@ def hybrid_recommendation(input_game_title, k = 10):
    recommended_games = games.iloc[recommended_game_indices].reset_index(drop=True)
    return recommended_games
 
+def sorted_score_df(df):
+   df['score'] = df['user_reviews'] * df['positive_ratio']
+   df_sorted = df.sort_values('score', ascending=False)
+   return df_sorted
+
+def most_popular_games():
+   df = games
+   n = 10 #number of games
+   list = sorted_score_df(df)
+   return list.iloc[0:10]
+
 def unused(cols, recommendations) :
    index=0
    for col in cols:
