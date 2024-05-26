@@ -12,6 +12,7 @@ cosine_sim_content = pickle.load(open('cosine_sim_content.pkl', 'rb'))
 games_title = games.sort_values(by='title')
 
 # Function to get collaborative filtering similarity for a given game
+@st.cache_data
 def get_collaborative_similarities(game_id, k=10):
    game_idx = games[games['app_id'] == game_id].index[0]
    game_vector = games_sparse[game_idx, :]
@@ -19,6 +20,7 @@ def get_collaborative_similarities(game_id, k=10):
    return indices.flatten(), distances.flatten()
 
 # 4. Hybrid Filtering
+@st.cache_data
 def hybrid_recommendation(input_game_title, k = 10):
    # Find the game ID for the input title
    input_game_id = games[games['title'] == input_game_title]['app_id'].values[0] 
@@ -57,6 +59,7 @@ def sorted_score_df(df):
    df_sorted = df.sort_values('score', ascending=False)
    return df_sorted
 
+@st.cache_data
 def most_popular_games():
    df = games
    n = 12 #number of games
@@ -75,6 +78,7 @@ def genre_filtering(list_genre = []):
       filtered_games = df.sort_values('title', ascending=True).reset_index(drop = True)
    return filtered_games
 
+@st.cache_data
 def selected_game_details(game_name):
    game_id = games[games['title'] == game_name]['app_id'].values[0] 
    game_idx = games[games['app_id'] == game_id].index[0]
