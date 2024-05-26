@@ -9,12 +9,12 @@ data = recommendations
 
 details = selected_game_details(game_name)
 #st.dataframe(details)
-con = st.container(border = True)
+con = st.container(border = True, use_column_width = True)
 con.image(details.loc['header_image'])
-#con.title(details['title'])
-#con.text(details['date_release'])
-#con.text(details['about'])
-#con.text(details['genres'])
+con.title(details.loc['title'])
+con.text(details.loc['date_release'])
+con.text(details.loc['about'])
+con.text(details.loc['genres'])
 
 st.header("Recommendations games")
 row1 = st.columns(2)
