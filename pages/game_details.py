@@ -34,7 +34,7 @@ def view(game_name):
     index = 0
     for col in row1 + row2 + row3 + row4 + row5:
       cont = col.container(border = True)
-      cont.image(data.loc[index,'header_image'])
+      cont.image(data.loc[index,'header_image'], use_column_width = True)
       cont.text(data.loc[index,'title'])
       with cont.popover("details", use_container_width = True):
         st.text("test")
@@ -56,8 +56,4 @@ else:
             st.header('🔴 PILIH GAME TERLEBIH DAHULU 🔴')
             st.page_link("app.py", label="Halaman Utama", icon="🏠", use_container_width = True)
             st.page_link("pages/game_directory.py", label="Daftar Game", icon="🕹", use_container_width = True)
-            #if st.button('Kembali ke Home'):
-            #    st.switch_page("app.py")
-            #if st.button('Kembali ke Daftar Game'):
-            #    st.switch_page("pages/game_details.py")
 
