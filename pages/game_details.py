@@ -27,7 +27,6 @@ else:
         game_name = st.session_state['saved_name']
     else:
         dialog_warning()
-        exit()    
 
 recommendations = hybrid_recommendation(game_name)
 data = recommendations
