@@ -10,11 +10,11 @@ data = recommendations
 details = selected_game_details(game_name)
 
 con = st.container(border = True)
-con.image(detail.loc[0, 'header_image'])
-con.title(detail.loc[0, 'title'])
-con.text(detail.loc[0, 'date_release'])
-con.text(detail.loc[0, 'about'])
-con.text(detail.loc[0, 'genres'])
+con.image(details.loc[0, 'header_image'])
+con.title(details.loc[0, 'title'])
+con.text(details.loc[0, 'date_release'])
+con.text(details.loc[0, 'about'])
+con.text(details.loc[0, 'genres'])
 
 st.header("Recommendations games")
 row1 = st.columns(2)
