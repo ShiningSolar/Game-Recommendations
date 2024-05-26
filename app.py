@@ -7,7 +7,7 @@ from func_var import games_title
 from func_var import hybrid_recommendation
 from func_var import most_popular_games
 
-st.header("Games Recommendation")
+st.title("Games Recommendation")
 
 selected_game = st.selectbox(
    "Type or select a game",
@@ -48,7 +48,7 @@ if st.button('Show Recommendation'):
       with st.popover(title, use_container_width = True):
          st.text("test")
 
-st.title("Most popular games")
+st.header("Most popular games")
 row1 = st.columns(3)
 row2 = st.columns(3)
 row3 = st.columns(3)
