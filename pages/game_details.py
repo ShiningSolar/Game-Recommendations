@@ -9,8 +9,8 @@ data = recommendations
 
 details = selected_game_details(game_name)
 #st.dataframe(details)
-con = st.container(border = True, use_column_width = True)
-con.image(details.loc['header_image'])
+con = st.container(border = True)
+con.image(details.loc['header_image'], use_column_width = True)
 con.title(details.loc['title'])
 con.text(details.loc['date_release'])
 con.text(details.loc['about'])
