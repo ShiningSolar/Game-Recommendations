@@ -55,5 +55,5 @@ else:
         with st.container(border = True):
             st.header('🔴 PILIH GAME TERLEBIH DAHULU 🔴')
             st.page_link("app.py", label="Halaman Utama", icon="🏠", use_container_width = True)
-            st.page_link("pages/game_directory.py", label="Daftar Game", icon="🕹", use_container_width = True)
+            st.page_link("pages/game_directory.py", label="Daftar Game", icon="📃", use_container_width = True)
 
