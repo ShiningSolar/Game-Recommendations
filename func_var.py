@@ -63,6 +63,12 @@ def most_popular_games():
    list = sorted_score_df(df).reset_index(drop = True)
    return list.iloc[0:n]
 
+def genre_filtering(genre):
+   #str = 
+   genres_games = games[games['genres'].str.contains('Racing'+'Indie', case=False)]
+   list = sorted_score_df(genres_games).reset_index(drop = True)
+   return list
+   
 def unused(cols, recommendations) :
    index=0
    for col in cols:
