@@ -3,6 +3,13 @@ import streamlit as st
 from func_var import hybrid_recommendation
 from func_var import selected_game_details
 
+st.set_page_config(
+    page_title="Game Details",
+    page_icon="🎮",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
 game_name = st.query_params.game_name
 recommendations = hybrid_recommendation(game_name)
 data = recommendations
