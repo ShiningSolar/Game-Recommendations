@@ -10,7 +10,25 @@ st.set_page_config(
     initial_sidebar_state="auto"
 )
 
-game_name = st.query_params.game_name
+@st.experimental_dialog("Pilih game terlebih dahulu")
+def dialog_warning():
+    if st.button('Home'):
+        st.switch_page("app.py")
+    if st.button('Game Directory'):
+        st.switch_page("pages/game_directory.py")
+
+game_name = ""
+
+if "game_name" in st.query_params:
+    game_name = st.query_params.game_name
+    st.session_state['saved_name'] = game_name
+else:
+    if 'saved_name' in st.session_state:
+        game_name = st.session_state['saved_name']
+    else:
+        dialog_warning()
+        exit()    
+
 recommendations = hybrid_recommendation(game_name)
 data = recommendations
 
