@@ -2,7 +2,7 @@ import streamlit as st
 #from app import selection
 from func_var import hybrid_recommendation
 
-game_name = "911 Operator"
+game_name = st.query_params.game_name
 recommendations = hybrid_recommendation(game_name)
 data = recommendations
 with st.container(border = True):
