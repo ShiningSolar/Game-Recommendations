@@ -32,5 +32,7 @@ for col in row1 + row2 + row3 + row4:
     st.switch_page("pages/game_details.py")
   index = index + 1
 
+num_of_item = len(list_popular)
+st.write(num_of_item)
 if st.button('1'):
   st.write('page 1')
