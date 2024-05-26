@@ -10,13 +10,6 @@ st.set_page_config(
     initial_sidebar_state="auto"
 )
 
-@st.experimental_dialog("Pilih game terlebih dahulu")
-def dialog_warning():
-    if st.button('Home'):
-        st.switch_page("app.py")
-    if st.button('Game Directory'):
-        st.switch_page("pages/game_directory.py")
-
 game_name = ""
 
 if "game_name" in st.query_params:
@@ -28,7 +21,11 @@ else:
         game_name = st.session_state['saved_name']
         view()
     else:
-        dialog_warning()
+        st.header('🔴 PILIH GAME TERLEBIH DAHULU 🔴')
+        if st.button('Kembali ke Home'):
+            st.switch_page("app.py")
+        if st.button('Kembali ke Daftar Game'):
+            st.switch_page("pages/game_details.py")
 
 @st.cache_data
 def view():
