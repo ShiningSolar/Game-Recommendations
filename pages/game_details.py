@@ -21,7 +21,7 @@ def view(game_name):
     con.title(details.loc['title'])
     con.text(details.loc['date_release'])
     with con.popover("About game", use_container_width  = True):
-      st.write(details.loc['about'])
+        st.write(details.loc['about'])
     con.text(details.loc['genres'])
     
     st.header("Recommendations games")
@@ -33,12 +33,13 @@ def view(game_name):
     
     index = 0
     for col in row1 + row2 + row3 + row4 + row5:
-      cont = col.container(border = True)
-      cont.image(data.loc[index,'header_image'], use_column_width = True)
-      cont.text(data.loc[index,'title'])
-      with cont.popover("details", use_container_width = True):
-        st.text("test")
-      index = index + 1
+        cont = col.container(border = True)
+        cont.image(data.loc[index,'header_image'], use_column_width = True)
+        title = data.loc[index,'title']
+        #cont.text(data.loc[index,'title'])
+        with cont.popover(title, use_container_width = True):
+            st.text("test")
+        index = index + 1
 
 
 game_name = ""
