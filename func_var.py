@@ -74,6 +74,12 @@ def genre_filtering(list_genre = []):
    else :
       filtered_games = df.sort_values('title', ascending=True).reset_index(drop = True)
    return filtered_games
+
+def selected_game_details(game_name):
+   game_id = games[games['title'] == game_name]['app_id'].values[0] 
+   game_idx = games[games['app_id'] == game_id].index[0]
+   list_details = games.loc(game_idx, :)
+   return list_details
    
 def unused(cols, recommendations) :
    index=0
