@@ -78,7 +78,7 @@ def genre_filtering(list_genre = []):
 def selected_game_details(game_name):
    game_id = games[games['title'] == game_name]['app_id'].values[0] 
    game_idx = games[games['app_id'] == game_id].index[0]
-   list_details = games.loc(game_idx, :)
+   list_details = games.loc(game_idx, :).reset_index(drop = True)
    return list_details
    
 def unused(cols, recommendations) :
