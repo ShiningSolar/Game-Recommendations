@@ -13,7 +13,7 @@ options = st.multiselect(
   label_visibility = "collapsed"
 )
 
-st.write("You selected:", options)
+#st.write("You selected:", options)
 
 row1 = st.columns(3)
 row2 = st.columns(3)
