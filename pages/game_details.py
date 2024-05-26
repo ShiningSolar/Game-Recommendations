@@ -13,7 +13,8 @@ con = st.container(border = True)
 con.image(details.loc['header_image'], use_column_width = True)
 con.title(details.loc['title'])
 con.text(details.loc['date_release'])
-con.write(details.loc['about'])
+with con.popover("About game", use_container_width  = True):
+  con.write(details.loc['about'])
 con.text(details.loc['genres'])
 
 st.header("Recommendations games")
