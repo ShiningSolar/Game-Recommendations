@@ -5,30 +5,19 @@ from func_var import hybrid_recommendation
 game_name = st.query_params.game_name
 recommendations = hybrid_recommendation(game_name)
 data = recommendations
-with st.container(border = True):
-  st.image(data.header_image[0], use_column_width = True)
-  title = data.title[0]
-  with st.popover(title, use_container_width = True):
+
+st.header("Recommendations games")
+row1 = st.columns(2)
+row2 = st.columns(2)
+row3 = st.columns(2)
+row4 = st.columns(2)
+row5 = st.columns(2)
+
+index = 0
+for col in row1 + row2 + row3 + row4 + row5:
+  cont = col.container(border = True)
+  cont.image(data.loc[index,'header_image'])
+  cont.text(data.loc[index,'title'])
+  with cont.popover("details", use_container_width = True):
     st.text("test")
-         
-with st.container(border = True):
-  st.image(data.header_image[1], use_column_width = True)
-  title = data.title[1]
-  with st.popover(title, use_container_width = True):
-    st.text("test")
-         
-with st.container(border = True):
-  st.image(data.header_image[2], use_column_width = True)
-  title = data.title[2]
-  with st.popover(title, use_container_width = True):
-    st.text("test")
-with st.container(border = True):
-  st.image(data.header_image[3], use_column_width = True)
-  title = data.title[3]
-  with st.popover(title, use_container_width = True):
-    st.text("test")
-with st.container(border = True):
-  st.image(data.header_image[4], use_column_width = True)
-  title = data.title[4]
-  with st.popover(title, use_container_width = True):
-    st.text("test")
+  index = index + 1
