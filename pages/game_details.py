@@ -6,6 +6,15 @@ game_name = st.query_params.game_name
 recommendations = hybrid_recommendation(game_name)
 data = recommendations
 
+details = selected_game_details(game_name)
+
+con = st.container(border = True)
+con.image(detail.loc[0, 'header_image'])
+con.title(detail.loc[0, 'title'])
+con.text(detail.loc[0, 'date_release'])
+con.text(detail.loc[0, 'about'])
+con.text(detail.loc[0, 'genres'])
+
 st.header("Recommendations games")
 row1 = st.columns(2)
 row2 = st.columns(2)
