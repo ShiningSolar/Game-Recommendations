@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from func_var import genre_filtering
 
 st.title("Daftar Game")
 genres = ["Racing", "Adventure", "Sports", "Strategy", "Casual", "RPG", "Simulation", "Action", "Indie"]
