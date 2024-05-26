@@ -6,7 +6,7 @@ genres = ["Racing", "Adventure", "Sports", "Strategy", "Casual", "RPG", "Simulat
 
 options = st.multiselect(
   "What are your favorite colors",
-  option = genres,
+  options = genres,
   default = None,
   placeholder = "Choose your game genre",
   label_visibility = "collapsed"
