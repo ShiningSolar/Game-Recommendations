@@ -7,6 +7,12 @@ from func_var import games_title
 from func_var import hybrid_recommendation
 from func_var import most_popular_games
 
+st.set_page_config(
+    page_title="Home",
+    layout="wide",
+    initial_sidebar_state="auto"
+)
+
 st.title("Games Recommendation")
 
 selected_game = st.selectbox(
