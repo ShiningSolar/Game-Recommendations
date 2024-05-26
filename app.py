@@ -17,6 +17,7 @@ selected_game = st.selectbox(
    label_visibility = "collapsed"
 )
 st.query_params.game_name = selected_game
+
 if st.button('Show Recommendation'):
    #selection = str(selected_game)
    st.switch_page("pages/game_details.py")
@@ -30,8 +31,13 @@ list_popular = most_popular_games()
 
 index = 0
 for col in row1 + row2 + row3 + row4:
+   image = list_popular.loc[index,'header_image']
+   title = list_popular.loc[index,'title']
    cont = col.container(border = True)
-   cont.image(list_popular.loc[index,'header_image'])
-   cont.text(list_popular.loc[index,'title'])
+   cont.image(image)
+   cont.text(title)
+   if st.button(title):
+      st.query_params.game_name = title
+      st.switch_page("pages/game_details.py")
    index = index + 1
 
