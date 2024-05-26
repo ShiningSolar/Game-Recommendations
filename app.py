@@ -38,13 +38,15 @@ list_popular = most_popular_games()
 
 index = 0
 for col in row1 + row2 + row3 + row4:
-   image = list_popular.loc[index,'header_image']
-   title = list_popular.loc[index,'title']
-   cont = col.container(border = True)
-   cont.image(image)
-   cont.text(title)
-   if cont.button(title):
-      st.query_params.game_name = title
-      st.switch_page("pages/game_details.py")
-   index = index + 1
+    image = list_popular.loc[index,'header_image']
+    title = list_popular.loc[index,'title']
+    cont = col.container(border = True)
+    cont.image(image)
+    cont.text(title)
+    if cont.page_link("pages/game_directory.py", label="Daftar Game", icon="🕹", use_container_width = True):
+        st.query_params.game_name = title
+    #if cont.button(title):
+    #    st.query_params.game_name = title
+    #    st.switch_page("pages/game_details.py")
+    index = index + 1
 
