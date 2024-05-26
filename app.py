@@ -17,7 +17,6 @@ selected_game = st.selectbox(
    label_visibility = "collapsed"
 )
 if st.button('Show Recommendation'):
-   recommendations = hybrid_recommendation(selected_game)
    st.switch_page("pages/game_details.py")
 
 st.header("Most popular games")
