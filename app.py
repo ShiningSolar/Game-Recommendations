@@ -43,7 +43,7 @@ for col in row1 + row2 + row3 + row4:
     cont = col.container(border = True)
     cont.image(image)
     cont.text(title)
-    if cont.page_link("pages/game_directory.py", label="Daftar Game", icon="🕹", use_container_width = True):
+    if cont.page_link("pages/game_details.py", label=title, use_container_width = True):
         st.query_params.game_name = title
     #if cont.button(title):
     #    st.query_params.game_name = title
