@@ -31,3 +31,6 @@ for col in row1 + row2 + row3 + row4:
     st.query_params.game_name = title
     st.switch_page("pages/game_details.py")
   index = index + 1
+
+if st.button('1'):
+  st.write('page 1')
