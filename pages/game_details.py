@@ -8,13 +8,13 @@ recommendations = hybrid_recommendation(game_name)
 data = recommendations
 
 details = selected_game_details(game_name)
-
+st.dataframe(details)
 con = st.container(border = True)
-con.image(details.loc[0,'header_image'])
-con.title(details['title'])
-con.text(details['date_release'])
-con.text(details['about'])
-con.text(details['genres'])
+#con.image(details.loc[0,'header_image'])
+#con.title(details['title'])
+#con.text(details['date_release'])
+#con.text(details['about'])
+#con.text(details['genres'])
 
 st.header("Recommendations games")
 row1 = st.columns(2)
