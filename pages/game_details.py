@@ -21,11 +21,13 @@ else:
         game_name = st.session_state['saved_name']
         view()
     else:
-        st.header('🔴 PILIH GAME TERLEBIH DAHULU 🔴')
-        if st.button('Kembali ke Home'):
-            st.switch_page("app.py")
-        if st.button('Kembali ke Daftar Game'):
-            st.switch_page("pages/game_details.py")
+        with st.container(border = True):
+            st.header('🔴 PILIH GAME TERLEBIH DAHULU 🔴')
+            home, game = st.columns(2)
+            if home.button('Kembali ke Home'):
+                st.switch_page("app.py")
+            if game.button('Kembali ke Daftar Game'):
+                st.switch_page("pages/game_details.py")
 
 @st.cache_data
 def view():
