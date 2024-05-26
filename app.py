@@ -16,9 +16,9 @@ selected_game = st.selectbox(
    placeholder = "Type or select a game",
    label_visibility = "collapsed"
 )
+st.query_params.game_name = selected_game
 if st.button('Show Recommendation'):
    #selection = str(selected_game)
-   st.query_params.game_name = selected_game
    st.switch_page("pages/game_details.py")
 
 st.header("Most popular games")
