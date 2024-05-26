@@ -7,7 +7,7 @@ st.set_page_config(
     page_title="Game Details",
     page_icon="🎮",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="auto"
 )
 
 game_name = st.query_params.game_name
