@@ -16,37 +16,9 @@ selected_game = st.selectbox(
    placeholder = "Type or select a game",
    label_visibility = "collapsed"
 )
-
 if st.button('Show Recommendation'):
    recommendations = hybrid_recommendation(selected_game)
-   data = recommendations
-   with st.container(border = True):
-      st.image(data.header_image[0], use_column_width = True)
-      title = data.title[0]
-      with st.popover(title, use_container_width = True):
-         st.text("test")
-         
-   with st.container(border = True):
-      st.image(data.header_image[1], use_column_width = True)
-      title = data.title[1]
-      with st.popover(title, use_container_width = True):
-         st.text("test")
-         
-   with st.container(border = True):
-      st.image(data.header_image[2], use_column_width = True)
-      title = data.title[2]
-      with st.popover(title, use_container_width = True):
-         st.text("test")
-   with st.container(border = True):
-      st.image(data.header_image[3], use_column_width = True)
-      title = data.title[3]
-      with st.popover(title, use_container_width = True):
-         st.text("test")
-   with st.container(border = True):
-      st.image(data.header_image[4], use_column_width = True)
-      title = data.title[4]
-      with st.popover(title, use_container_width = True):
-         st.text("test")
+   st.switch_page("game_details.py")
 
 st.header("Most popular games")
 row1 = st.columns(3)
