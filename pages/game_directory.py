@@ -19,7 +19,7 @@ row1 = st.columns(3)
 row2 = st.columns(3)
 row3 = st.columns(3)
 row4 = st.columns(3)
-list_popular = genre_filtering("none")
+list_popular = genre_filtering(options)
 
 index = 0
 for col in row1 + row2 + row3 + row4:
