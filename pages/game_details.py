@@ -1,6 +1,8 @@
 import streamlit as st
-from app import recommendations
+from app import selected_game
+from func_var import hybrid_recommendation
 
+recommendations = hybrid_recommendation(selected_game)
 data = recommendations
 with st.container(border = True):
   st.image(data.header_image[0], use_column_width = True)
