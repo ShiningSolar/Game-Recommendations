@@ -1,8 +1,8 @@
 import streamlit as st
-from app import selection
+#from app import selection
 from func_var import hybrid_recommendation
 
-game_name = selection
+game_name = "911 Operator"
 recommendations = hybrid_recommendation(game_name)
 data = recommendations
 with st.container(border = True):
