@@ -23,7 +23,11 @@ list_popular = genre_filtering(options)
 
 index = 0
 for col in row1 + row2 + row3 + row4:
-   cont = col.container(border = True)
-   cont.image(list_popular.loc[index,'header_image'])
-   cont.text(list_popular.loc[index,'title'])
-   index = index + 1
+  cont = col.container(border = True)
+  title = list_popular.loc[index,'title']
+  cont.image(list_popular.loc[index,'header_image'])
+  #cont.text(list_popular.loc[index,'title'])
+  if cont.button(title, use_container_width = True):
+    st.query_params.game_name = title
+    st.switch_page("pages/game_details.py")
+  index = index + 1
