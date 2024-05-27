@@ -39,6 +39,6 @@ buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,0.5,1,3])
 num_of_page = 1
 page_number.markdown(f"""**{num_of_page}**""")
 if back_button.button('Back'):
-  st.write('page 1')
+  st.write('back')
 if next_button.button('Next'):
-   st.write('page 1')
+   st.write('next')
