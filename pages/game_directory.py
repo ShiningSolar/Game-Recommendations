@@ -35,7 +35,7 @@ for col in row1 + row2 + row3 + row4:
 num_of_item = len(list_popular)
 st.write(num_of_item)
 
-buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,1,1,3])
+buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,0.5,1,3])
 num_of_page = 1
 page_number.write(num_of_page)
 if back_button.button('Back'):
