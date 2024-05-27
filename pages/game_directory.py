@@ -35,20 +35,19 @@ def show_data(index = 0):
       st.switch_page("pages/game_details.py")
     index = index + 1
   return index
-    
-last_index = show_data()
-
-num_of_item = len(list_popular)
-st.write(num_of_item)
-
-def switch_page(last_index):
+  
+def switch_page(index):
   row1.empty()
   row2.empty()
   row3.empty()
   row4.empty()
-  last_index= show_data(last_index)
+  last_index= show_data(index)
   st.write(last_index)
   return last_index
+  
+last_index = show_data()
+
+
 
 buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,0.5,1,3])
 num_of_page = 1
@@ -57,5 +56,8 @@ if back_button.button('Back'):
   st.write('back')
 if next_button.button('Next'):
   st.write('next')
-  last_index = switch_page(last_index)
-  
+  index = last_index
+  last_index = switch_page(index)
+
+num_of_item = len(list_popular)
+st.write(num_of_item)
