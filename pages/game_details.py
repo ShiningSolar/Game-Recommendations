@@ -21,8 +21,8 @@ def view(game_name):
     con.image(details.loc['header_image'], use_column_width = True)
     con.title(details.loc['title'])
     cols = con.columns([1, 3])
-    cols[0] = st.text('Tanggal rilis :')
-    cols[1] = st.text(tanggal[:10])
+    cols[0].text('Tanggal rilis :')
+    cols[1].text(tanggal[:10])
     with con.popover("About game", use_container_width  = True):
         st.write(details.loc['about'])
     con.text(details.loc['genres'])
