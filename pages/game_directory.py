@@ -15,14 +15,13 @@ options = st.multiselect(
 
 #st.write("You selected:", options)
 
-row1 = st.columns(3)
-row2 = st.columns(3)
-row3 = st.columns(3)
-row4 = st.columns(3)
-list_popular = genre_filtering(options)
 
-
-def show_data(list_popular, index = 0):
+def show_data(index = 0):
+  row1 = st.columns(3)
+  row2 = st.columns(3)
+  row3 = st.columns(3)
+  row4 = st.columns(3)
+  list_popular = genre_filtering(options)
   for col in row1 + row2 + row3 + row4:
     cont = col.container(border = True)
     title = list_popular.loc[index,'title']
