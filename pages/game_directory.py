@@ -53,15 +53,25 @@ buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,0.5,1,3])
 num_of_page = 1
 num_of_item = len(list_popular)
 
+if 'next' not in st.session_state:
+    st.session_state.next = False
+if 'back' not in st.session_state:
+    st.session_state.back = False
+
+def click_next():
+    st.session_state.next = True
+def click_back():
+    st.session_state.back = True
+
 page_number.markdown(f"""**{num_of_page}**""")
-if back_button.button('Back'):
+back_button.button('Click me', on_click=click_back)
+next_button.button('Click me', on_click=click_next)
+if st.session_state.back:
   st.write('back')
-if next_button.button('Next'):
+if st.session_state.next:
   index = int(st.query_params.index)
   st.write('next')
   switch_page(index)
-  #index = last_index
-  #last_index = next_index
 
 
 st.write(num_of_item)
