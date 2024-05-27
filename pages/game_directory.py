@@ -21,11 +21,11 @@ row4 = st.empty()
 list_popular = genre_filtering(options)
 
 def show_data(index = 0):
-  row1.columns(3)
-  row2.columns(3)
-  row3.columns(3)
-  row4.columns(3)
-  for col in row1 + row2 + row3 + row4:
+  a = row1.columns(3)
+  b = row2.columns(3)
+  c = row3.columns(3)
+  d = row4.columns(3)
+  for col in a + b + c + d:
     cont = col.container(border = True)
     title = list_popular.loc[index,'title']
     cont.image(list_popular.loc[index,'header_image'])
