@@ -74,5 +74,5 @@ if st.session_state.next:
   switch_page(index)
   st.session_state.next = False
 
-
+st.session_state
 st.write(num_of_item)
