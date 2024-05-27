@@ -57,7 +57,7 @@ page_number.markdown(f"""**{num_of_page}**""")
 if back_button.button('Back'):
   st.write('back')
 if next_button.button('Next'):
-  index = st.query_params.index
+  index = str(st.query_params.index)
   st.write('next')
   switch_page(index)
   #index = last_index
