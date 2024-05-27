@@ -13,23 +13,23 @@ st.set_page_config(
     initial_sidebar_state="auto"
 )
 
-st.title("Games Recommendation")
+st.title("Aplikasi Rekomendasi Game")
 
 selected_game = st.selectbox(
    "Type or select a game",
    games_title['title'],
    index = None,
-   placeholder = "Type or select a game",
+   placeholder = "Ketik atau pilih game",
    label_visibility = "collapsed"
 )
 
 
-if st.button('Show Recommendation'):
+if st.button('Cari rekomendasi'):
    #selection = str(selected_game)
    st.query_params.game_name = selected_game
    st.switch_page("pages/game_details.py")
 
-st.header("Most popular games")
+st.header("Game Terpopuler")
 row1 = st.columns(3)
 row2 = st.columns(3)
 row3 = st.columns(3)
