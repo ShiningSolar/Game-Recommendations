@@ -23,11 +23,12 @@ selected_game = st.selectbox(
    label_visibility = "collapsed"
 )
 
-
-if st.button('Cari rekomendasi'):
-   #selection = str(selected_game)
-   st.query_params.game_name = selected_game
-   st.switch_page("pages/game_details.py")
+col1, col2, col3 = st.columns([2, 1, 2])
+with col2:
+    if st.button('Cari rekomendasi'):
+       #selection = str(selected_game)
+       st.query_params.game_name = selected_game
+       st.switch_page("pages/game_details.py")
 
 st.header("Game Terpopuler")
 row1 = st.columns(3)
