@@ -14,7 +14,7 @@ options = st.multiselect(
 )
 
 #st.write("You selected:", options)
-
+list_popular = genre_filtering(options)
 
 def show_data(index = 0):
   row1 = st.columns(3)
@@ -31,15 +31,16 @@ def show_data(index = 0):
       st.query_params.game_name = title
       st.switch_page("pages/game_details.py")
     index = index + 1
-  return index
+  return index, list_popular
     
 last_index = show_data()
+
 
 num_of_item = len(list_popular)
 st.write(num_of_item)
 
-def switch_page(num_of_item, last_index):
-  last_index = show_data(list_popular, last_index)
+def switch_page(last_index):
+  last_index, list_popular = show_data(last_index)
   return last_index
 
 buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,0.5,1,3])
