@@ -35,8 +35,9 @@ def view(game_name):
         st.write(details.loc['about'])
     con.markdown('**Screenshots :**')
     cols4 = con.columns([1, 1])
-    cols4[0].image(screenshots[0])
-    cols4[1].image(screenshots[1])
+    con.markdown(screenshots)
+    #cols4[0].image(screenshots[0])
+    #cols4[1].image(screenshots[1])
     
     
     st.header("Recommendations games")
