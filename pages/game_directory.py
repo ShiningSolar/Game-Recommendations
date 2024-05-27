@@ -41,7 +41,7 @@ def switch_page(index):
   row2.empty()
   row3.empty()
   row4.empty()
-  last_index= show_data(index)
+  last_index = show_data(index)
   st.write(last_index)
   return last_index
   
@@ -51,13 +51,16 @@ last_index = show_data()
 
 buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,0.5,1,3])
 num_of_page = 1
+num_of_item = len(list_popular)
+
 page_number.markdown(f"""**{num_of_page}**""")
 if back_button.button('Back'):
   st.write('back')
 if next_button.button('Next'):
   st.write('next')
   index = last_index
-  last_index = switch_page(index)
+  next_index = switch_page(index)
+  last_index = next_index
 
-num_of_item = len(list_popular)
+
 st.write(num_of_item)
