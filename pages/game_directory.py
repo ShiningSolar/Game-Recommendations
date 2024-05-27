@@ -22,9 +22,9 @@ list_popular = genre_filtering(options)
 
 def show_data(index = 0):
   row1.columns(3)
-  row1.columns(3)
-  row1.columns(3)
-  row1.columns(3)
+  row2.columns(3)
+  row3.columns(3)
+  row4.columns(3)
   for col in row1 + row2 + row3 + row4:
     cont = col.container(border = True)
     title = list_popular.loc[index,'title']
