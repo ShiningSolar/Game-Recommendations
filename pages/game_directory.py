@@ -64,8 +64,8 @@ def click_back():
     st.session_state.back = True
 
 page_number.markdown(f"""**{num_of_page}**""")
-back_button.button('Click me', on_click=click_back)
-next_button.button('Click me', on_click=click_next)
+back_button.button('back', on_click=click_back)
+next_button.button('next', on_click=click_next)
 if st.session_state.back:
   st.write('back')
 if st.session_state.next:
