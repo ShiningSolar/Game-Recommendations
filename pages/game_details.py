@@ -33,9 +33,11 @@ def view(game_name):
     cols3[1].page_link(website, label="go to website", icon="🌎")
     with con.popover("About game", use_container_width  = True):
         st.write(details.loc['about'])
-    con.markdown('**Screenshots :**')
-    cols4 = con.columns([1, 1])
-    con.markdown(screenshots)
+    #con.markdown('**Screenshots :**')
+    with con.popover("Screenshots", use_container_width  = True):
+        st.write(screenshots)
+    #cols4 = con.columns([1, 1])
+    #con.markdown(screenshots)
     #cols4[0].image(screenshots[0])
     #cols4[1].image(screenshots[1])
     
