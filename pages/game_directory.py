@@ -61,7 +61,7 @@ if st.session_state.get('next'):
   num_of_page += 1
   st.write('next')
   switch_page(index)
-  st.session_state.next = False
+  st.session_state['next'] = False
   
 page_number.markdown(f"""**{num_of_page}**""")
 back_button.button('back', key = 'back')
