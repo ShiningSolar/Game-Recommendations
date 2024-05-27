@@ -33,7 +33,7 @@ def show_data(index = 0):
     index = index + 1
   return index
     
-last_index = show_data(list_popular)
+last_index = show_data()
 
 num_of_item = len(list_popular)
 st.write(num_of_item)
