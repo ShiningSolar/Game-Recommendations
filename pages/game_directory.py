@@ -33,14 +33,15 @@ def show_data(list_popular):
       st.query_params.game_name = title
       st.switch_page("pages/game_details.py")
     index = index + 1
+  return index
     
-show_data(list_popular)
+last_index = show_data(list_popular)
 
 num_of_item = len(list_popular)
 st.write(num_of_item)
 
-#@st.cache_data
 #def switch_page(num_of_item):
+  
   
 
 buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,0.5,1,3])
