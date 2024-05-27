@@ -24,13 +24,14 @@ def view(game_name):
     con.title(details.loc['title'])
     cols1 = con.columns([1, 3])
     cols2 = con.columns([1, 3])
-    cols3 = con.columns([1, 3])
     cols1[0].markdown('**Tanggal rilis :**')
     cols1[1].markdown(tanggal[:10])
     cols2[0].markdown('**Genre :**')
     cols2[1].markdown(details.loc['genres'])
-    cols3[0].markdown('**Website :**')
-    cols3[1].page_link(website, label="go to website", icon="🌎")
+    if website != 'unkown':
+        cols3 = con.columns([1, 3])
+        cols3[0].markdown('**Website :**')
+        cols3[1].page_link(website, label="go to website", icon="🌎")
     with con.popover("About game", use_container_width  = True):
         st.write(details.loc['about'])
     #con.markdown('**Screenshots :**')
@@ -61,13 +62,14 @@ def view(game_name):
             st.text("test")
             cols1 = st.columns([1, 3])
             cols2 = st.columns([1, 3])
-            cols3 = st.columns([1, 3])
             cols1[0].markdown('**Tanggal rilis :**')
             cols1[1].markdown(tanggal[:10])
             cols2[0].markdown('**Genre :**')
             cols2[1].markdown(data.loc[index, 'genres'])
-            cols3[0].markdown('**Website :**')
-            cols3[1].page_link(website, label="go to website", icon="🌎")
+            if website != 'unkown':
+                cols3 = st.columns([1, 3])
+                cols3[0].markdown('**Website :**')
+                cols3[1].page_link(website, label="go to website", icon="🌎")
         index = index + 1
 
 
