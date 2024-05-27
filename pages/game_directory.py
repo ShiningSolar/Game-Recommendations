@@ -50,5 +50,5 @@ if back_button.button('Back'):
   st.write('back')
 if next_button.button('Next'):
   st.write('next')
-  next_index = switch_page(num_of_item, last_index)
+  next_index = switch_page(last_index)
   
