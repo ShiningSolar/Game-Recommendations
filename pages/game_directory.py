@@ -56,11 +56,11 @@ num_of_item = len(list_popular)
 page_number.markdown(f"""**{num_of_page}**""")
 if back_button.button('Back'):
   st.write('back')
-if next_button.button('Next'):
-  st.write('next')
-  index = last_index
-  next_index = switch_page(index)
-  last_index = next_index
+next_button.button('Next', on_click = switch_page, args = [last_index])
+  #st.write('next')
+  #index = last_index
+  #next_index = switch_page(index)
+  #last_index = next_index
 
 
 st.write(num_of_item)
