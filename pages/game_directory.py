@@ -21,10 +21,6 @@ row4 = st.empty()
 list_popular = genre_filtering(options)
 
 def show_data(index = 0):
-  row1.empty()
-  row2.empty()
-  row3.empty()
-  row4.empty()
   row1 = row1.columns(3)
   row2 = row1.columns(3)
   row3 = row1.columns(3)
@@ -47,6 +43,10 @@ num_of_item = len(list_popular)
 st.write(num_of_item)
 
 def switch_page(last_index):
+  row1.empty()
+  row2.empty()
+  row3.empty()
+  row4.empty()
   last_index, list_popular = show_data(last_index)
   return last_index
 
