@@ -16,7 +16,7 @@ def view(game_name):
     
     details = selected_game_details(game_name)
     #st.dataframe(details)
-    tanggal = details.loc['date_release']
+    tanggal = str(details.loc['date_release'])
     con = st.container(border = True)
     con.image(details.loc['header_image'], use_column_width = True)
     con.title(details.loc['title'])
