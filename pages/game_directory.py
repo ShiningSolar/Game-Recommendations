@@ -9,7 +9,7 @@ options = st.multiselect(
   "What are your favorite colors",
   options = genres,
   default = None,
-  placeholder = "Choose your game genre",
+  placeholder = "Pilih genre game yang diinginkan",
   label_visibility = "collapsed"
 )
 
