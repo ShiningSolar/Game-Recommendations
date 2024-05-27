@@ -59,7 +59,6 @@ def view(game_name):
         website = data.loc[index, 'website']
         #cont.text(data.loc[index,'title'])
         with cont.popover(title, use_container_width = True):
-            st.text("test")
             cols1 = st.columns([1, 3])
             cols2 = st.columns([1, 3])
             cols1[0].markdown('**Tanggal rilis :**')
