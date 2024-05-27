@@ -72,6 +72,7 @@ if st.session_state.next:
   index = int(st.query_params.index)
   st.write('next')
   switch_page(index)
+  st.session_state.next = False
 
 
 st.write(num_of_item)
