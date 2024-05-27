@@ -48,6 +48,7 @@ def switch_page(last_index):
   row3.empty()
   row4.empty()
   last_index= show_data(last_index)
+  st.write(last_index)
   return last_index
 
 buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,0.5,1,3])
