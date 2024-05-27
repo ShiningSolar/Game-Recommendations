@@ -54,9 +54,20 @@ def view(game_name):
         cont = col.container(border = True)
         cont.image(data.loc[index,'header_image'], use_column_width = True)
         title = data.loc[index,'title']
+        tanggal = data.loc[index, 'date_release']
+        website = data.loc[index, 'website']
         #cont.text(data.loc[index,'title'])
         with cont.popover(title, use_container_width = True):
             st.text("test")
+            cols1 = st.columns([1, 3])
+            cols2 = st.columns([1, 3])
+            cols3 = st.columns([1, 3])
+            cols1[0].markdown('**Tanggal rilis :**')
+            cols1[1].markdown(tanggal[:10])
+            cols2[0].markdown('**Genre :**')
+            cols2[1].markdown(data.loc[index, 'genres'])
+            cols3[0].markdown('**Website :**')
+            cols3[1].page_link(website, label="go to website", icon="🌎")
         index = index + 1
 
 
