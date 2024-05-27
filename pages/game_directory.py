@@ -14,14 +14,21 @@ options = st.multiselect(
 )
 
 #st.write("You selected:", options)
+row1 = st.empty()
+row2 = st.empty()
+row3 = st.empty()
+row4 = st.empty()
 list_popular = genre_filtering(options)
 
 def show_data(index = 0):
-  row1 = st.columns(3)
-  row2 = st.columns(3)
-  row3 = st.columns(3)
-  row4 = st.columns(3)
-  list_popular = genre_filtering(options)
+  row1.empty()
+  row2.empty()
+  row3.empty()
+  row4.empty()
+  row1 = row1.columns(3)
+  row2 = row1.columns(3)
+  row3 = row1.columns(3)
+  row4 = row1.columns(3)
   for col in row1 + row2 + row3 + row4:
     cont = col.container(border = True)
     title = list_popular.loc[index,'title']
@@ -31,7 +38,7 @@ def show_data(index = 0):
       st.query_params.game_name = title
       st.switch_page("pages/game_details.py")
     index = index + 1
-  return index, list_popular
+  return index
     
 last_index = show_data()
 
