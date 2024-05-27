@@ -17,7 +17,8 @@ def view(game_name):
     details = selected_game_details(game_name)
     #st.dataframe(details)
     tanggal = str(details.loc['date_release'])
-    website = (details.loc['website'])
+    website = details.loc['website']
+    screenshots = details.loc['screenshots']
     con = st.container(border = True)
     con.image(details.loc['header_image'], use_column_width = True)
     con.title(details.loc['title'])
@@ -32,6 +33,10 @@ def view(game_name):
     cols3[1].page_link(website, label="go to website", icon="🌎")
     with con.popover("About game", use_container_width  = True):
         st.write(details.loc['about'])
+    con.markdown('**Screenshots :**')
+    cols4 = con.columns([1, 1])
+    cols4[0].image(screenshots[0])
+    cols4[1].image(screenshots[1])
     
     
     st.header("Recommendations games")
