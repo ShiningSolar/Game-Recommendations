@@ -64,7 +64,7 @@ if st.session_state.get('next'):
   
 page_number.markdown(f"""**{num_of_page}**""")
 back_button.button('back', key = 'back')
-next_button.button('next', key = 'next)
+next_button.button('next', key = 'next')
 
 
 st.session_state
