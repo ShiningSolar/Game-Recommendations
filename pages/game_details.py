@@ -54,7 +54,7 @@ def view(game_name):
         cont = col.container(border = True)
         cont.image(data.loc[index,'header_image'], use_column_width = True)
         title = data.loc[index,'title']
-        tanggal = data.loc[index, 'date_release']
+        tanggal = str(data.loc[index, 'date_release'])
         website = data.loc[index, 'website']
         #cont.text(data.loc[index,'title'])
         with cont.popover(title, use_container_width = True):
