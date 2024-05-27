@@ -36,16 +36,15 @@ def show_data(index = 0):
     index = index + 1
   if 'index' not in st.query_params:
     st.query_params.index = index
-  
+  else:
+    st.query_params.index = index
   
 def switch_page(index):
   row1.empty()
   row2.empty()
   row3.empty()
   row4.empty()
-  last_index = show_data(index)
-  st.write(last_index)
-  return last_index
+  show_data(index)
   
 show_data()
 
@@ -58,9 +57,10 @@ page_number.markdown(f"""**{num_of_page}**""")
 if back_button.button('Back'):
   st.write('back')
 if next_button.button('Next'):
+  index = st.query_params.index
   st.write('next')
+  switch_page(index)
   #index = last_index
-  #next_index = switch_page(index)
   #last_index = next_index
 
 
