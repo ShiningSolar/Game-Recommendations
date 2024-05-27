@@ -38,7 +38,6 @@ def show_data(index = 0):
     
 last_index = show_data()
 
-
 num_of_item = len(list_popular)
 st.write(num_of_item)
 
@@ -58,5 +57,5 @@ if back_button.button('Back'):
   st.write('back')
 if next_button.button('Next'):
   st.write('next')
-  next_index = switch_page(last_index)
+  last_index = switch_page(last_index)
   
