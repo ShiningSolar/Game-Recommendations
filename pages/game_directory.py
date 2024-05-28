@@ -97,10 +97,10 @@ def back_func():
 buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,1,1,3])
 #page_number.markdown(f"""**{num_of_page}**""")
 page_text = page_number.empty()
+button_state = False
 if 'page' not in st.session_state:
   st.session_state['page'] = num_of_page
   page_text.markdown(f"""{num_of_page}""")
-  button_state = False
   
 if st.session_state.get('next') :
   page_text.empty()
