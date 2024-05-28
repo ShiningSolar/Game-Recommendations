@@ -74,14 +74,14 @@ def next_func():
     st.session_state['next'] = 2
     st.session_state['page'] = st.session_state['next']
     index = int( st.session_state['index'])
-    switch_page()
+    #switch_page()
     show_data(index)
   else :
     num_of_page = st.session_state['next']
     st.session_state['next'] = num_of_page + 1
     index = int( st.session_state['index'])
     st.session_state['page'] = st.session_state['next']
-    switch_page()
+    #switch_page()
     show_data(index)
   st.session_state['button_state'] = False
 
@@ -95,7 +95,7 @@ def back_func():
   index = int(st.session_state['index'])
   st.session_state['index'] = str(index - 12)
   st.session_state['page'] = st.session_state['back']
-  switch_page()
+  #switch_page()
   show_data(int(st.session_state['index']))
   st.write('back func')
   st.write(st.session_state['index'])
