@@ -40,12 +40,14 @@ def show_data(index = 0):
     st.query_params.index = index
   else:
     st.query_params.index = index
+  st.session_state.x = int(st.query_params.index)
   
 def switch_page(index):
   row1.empty()
   row2.empty()
   row3.empty()
   row4.empty()
+  index = st.session_state.x
   show_data(index)
   
 show_data()
@@ -71,10 +73,9 @@ if 'next' not in st.session_state:
   st.session_state['next'] = num_of_page
 else :
   if st.session_state['next'] == num_of_page + 1:
-    index = int(st.query_params.index)
     num_of_page = st.session_state['next']
     st.write('next')
-    switch_page(index)
+    switch_page()
 
 st.session_state
 st.write(num_of_item)
