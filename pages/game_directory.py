@@ -72,6 +72,7 @@ def next_func():
     index = int( st.session_state['index'])
     page_text.empty()
     page_text.write(num_of_page)
+    st.write(num_of_page)
     switch_page(index)
   else :
     num_of_page = st.session_state['next']
@@ -79,6 +80,7 @@ def next_func():
     index = int( st.session_state['index'])
     page_text.empty()
     page_text.write(st.session_state['next'])
+    st.write(st.session_state['next'])
     switch_page(index)
 
 
