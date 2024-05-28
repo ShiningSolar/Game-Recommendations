@@ -97,7 +97,9 @@ def back_func():
   st.session_state['page'] = st.session_state['back']
   #switch_page()
   #show_data(int(st.session_state['index']))
-  st.write('back func')
+  st.write('index var in back func')
+  st.write(index)
+  st.write('index state in back func')
   st.write(st.session_state['index'])
     
 
