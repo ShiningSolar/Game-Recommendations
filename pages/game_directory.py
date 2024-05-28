@@ -52,7 +52,7 @@ def switch_page(index):
   row2.empty()
   row3.empty()
   row4.empty()
-  show_data(index)
+  #show_data(index)
   
 show_data(index)
 
