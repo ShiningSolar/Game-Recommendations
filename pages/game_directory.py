@@ -100,7 +100,7 @@ if num_of_page == 1:
   page_text.markdown(f"""{num_of_page}""")
 if st.session_state.get('next') :
   page_text.empty()
-  page_text.markdown((f"""{st.session_state['next']}""")
+  page_text.markdown(f"""{st.session_state['next']}""")
 back_button.button('back', on_click = back_func)
 next_button.button('next', on_click = next_func)
     
