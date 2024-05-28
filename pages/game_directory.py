@@ -96,7 +96,6 @@ buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,1,1,3])
 page_text = page_number.empty()
 if num_of_page == 1:
   page_text.write(num_of_page)
-page_number.empty()
 back_button.button('back', on_click = back_func)
 next_button.button('next', on_click = next_func)
     
