@@ -95,7 +95,7 @@ def back_func():
   if st.session_state['back'] == 1:
       st.session_state['button_state'] = True
   index = int(st.session_state['index'])
-  index = index - 12
+  index = index - 24
   st.session_state['index'] = str(index)
   st.session_state['page'] = st.session_state['back']
   #switch_page()
