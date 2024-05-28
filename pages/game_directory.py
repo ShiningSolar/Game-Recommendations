@@ -105,11 +105,14 @@ buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,1,1,3])
 #page_number.markdown(f"""**{num_of_page}**""")
 page_text = page_number.empty()
 
-if 'page' not in st.session_state:
+if 'page' not in st.session_state :
   st.session_state['page'] = num_of_page
   show_data(index)
   page_text.markdown(f"""{num_of_page}""")
   st.session_state['button_state'] = True
+elif st.session_state.get('page') :
+  index = int(st.session_state['index'])
+  show_data(index)
   
 if st.session_state.get('next') :
   page_text.empty()
