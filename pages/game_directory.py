@@ -44,7 +44,7 @@ def show_data(i):
     index = index + 1
 
     i = index
-    st.session_state.['index'] = str(i)
+    st.session_state['index'] = str(i)
   
 def switch_page(index):
   row1.empty()
