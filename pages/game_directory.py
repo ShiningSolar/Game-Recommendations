@@ -42,7 +42,7 @@ def show_data(index = 0):
     st.query_params.index = index
   st.session_state.x = int(st.query_params.index)
   
-def switch_page(index):
+def switch_page():
   row1.empty()
   row2.empty()
   row3.empty()
