@@ -44,6 +44,7 @@ def show_data(i):
       cont = col.container(border = True)
       title = list_popular.loc[index,'title']
       cont.image(list_popular.loc[index,'header_image'])
+      cont.text(index)
       if cont.button(title, use_container_width = True):
         st.query_params.game_name = title
         st.switch_page("pages/game_details.py")
@@ -114,7 +115,7 @@ back_button.button('back', on_click = back_func, disabled = button_state)
 next_button.button('next', on_click = next_func)
     
 
-#st.session_state
+st.session_state
 #st.write(num_of_item)
 
 
