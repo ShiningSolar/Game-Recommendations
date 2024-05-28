@@ -79,7 +79,7 @@ def next_func():
     st.write(st.session_state['next'])
     st.session_state['page'] = st.session_state['next']
     switch_page(index)
-  button_state = True
+  button_state = False
 
 
 def back_func():
@@ -88,7 +88,7 @@ def back_func():
     st.session_state['back'] = num_of_page -1
   else :
     if st.session_state['back'] == 1:
-      button_state = False
+      button_state = True
     num_of_page = st.session_state['page']
     st.session_state['back'] = num_of_page - 1
   st.write('back')
@@ -98,10 +98,11 @@ def back_func():
 buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,1,1,3])
 #page_number.markdown(f"""**{num_of_page}**""")
 page_text = page_number.empty()
-button_state = False
+
 if 'page' not in st.session_state:
   st.session_state['page'] = num_of_page
   page_text.markdown(f"""{num_of_page}""")
+  button_state = True
   
 if st.session_state.get('next') :
   page_text.empty()
@@ -111,7 +112,7 @@ if st.session_state.get('back') :
   page_text.empty()
   page_text.markdown(f"""{st.session_state['back']}""")
 
-back_button.button('back', on_click = back_func, disabled = False)
+back_button.button('back', on_click = back_func, disabled = button_state)
 next_button.button('next', on_click = next_func)
     
 
