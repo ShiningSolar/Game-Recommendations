@@ -65,14 +65,20 @@ page_number.markdown(f"""**{num_of_page}**""")
 back_button.button('back', on_click = back_func)
 next_button.button('next', on_click = next_func)
 
-if st.session_state['back'] == num_of_page - 1 :
-  st.write('back')
+if 'back' not in st.session_state:
+  st.session_state['back'] == num_of_page
+else :
+  if st.session_state['back'] == num_of_page - 1 :
+    st.write('back')
     
-if st.session_state['next'] == num_of_page + 1:
-  index = int(st.query_params.index)
-  num_of_page += 1
-  st.write('next')
-  switch_page(index)
+if 'next' not in st.session_state:
+  st.session_state['next'] == num_of_page
+else :
+  if st.session_state['next'] == num_of_page + 1:
+    index = int(st.query_params.index)
+    num_of_page += 1
+    st.write('next')
+    switch_page(index)
 
 st.session_state
 st.write(num_of_item)
