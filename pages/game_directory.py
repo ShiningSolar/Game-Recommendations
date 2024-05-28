@@ -76,7 +76,6 @@ def next_func():
     num_of_page = st.session_state['next']
     st.session_state['next'] = num_of_page + 1
     index = int( st.session_state['index'])
-    st.write(st.session_state['next'])
     st.session_state['page'] = st.session_state['next']
     switch_page(index)
   st.session_state['button_state'] = False
@@ -86,12 +85,16 @@ def back_func():
   if 'back' not in st.session_state:
     num_of_page = st.session_state['page']
     st.session_state['back'] = num_of_page -1
+    index = int( st.session_state['index'])-12
+    #st.session_state['page'] = st.session_state['back']
+    switch_page(index)
   else :
-    if st.session_state['back'] == 1:
-      st.session_state['button_state'] = True
     num_of_page = st.session_state['page']
     st.session_state['back'] = num_of_page - 1
-  st.write('back')
+    index = int( st.session_state['index'])-12
+    switch_page(index)
+  if st.session_state['back'] == 1:
+      st.session_state['button_state'] = True
   st.session_state['page'] = st.session_state['back']
     
 
