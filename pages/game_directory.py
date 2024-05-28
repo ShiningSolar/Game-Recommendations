@@ -35,6 +35,8 @@ def show_data(i):
   index =  int(st.session_state['index'])
   
   for col in a + b + c + d:
+    if index > len(list_popular):
+      break()
     cont = col.container(border = True)
     title = list_popular.loc[index,'title']
     cont.image(list_popular.loc[index,'header_image'])
