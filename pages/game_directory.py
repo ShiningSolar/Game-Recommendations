@@ -54,24 +54,22 @@ show_data()
 
 def next_func():
   if 'next' not in st.session_state:
-    st.session_state['next'] = 1
+    st.session_state['next'] = 2
   else :
     num_of_page = st.session_state['next']
     st.session_state['next'] = num_of_page + 1
-    if st.session_state['next'] == num_of_page + 1:
-      num_of_page = st.session_state['next']
-      st.write('next')
-      switch_page()
+  num_of_page = st.session_state['next']
+  st.write('next')
+  switch_page()
 
 
 def back_func():
   if 'back' not in st.session_state:
-    st.session_state['back'] = 1
+    st.session_state['back'] = 2
   else :
     num_of_page = st.session_state['back']
-    st.session_state['back'] == num_of_page - 1
-    if st.session_state['back'] == num_of_page - 1 :
-      st.write('back')
+    st.session_state['back'] = num_of_page - 1
+  st.write('back')
     
 
 buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,1,1,3])
