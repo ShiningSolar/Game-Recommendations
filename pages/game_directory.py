@@ -74,13 +74,13 @@ def next_func():
     st.session_state['next'] = 2
     st.session_state['page'] = st.session_state['next']
     index = int( st.session_state['index'])
-    switch_page()
+    show_data(index)
   else :
     num_of_page = st.session_state['next']
     st.session_state['next'] = num_of_page + 1
     index = int( st.session_state['index'])
     st.session_state['page'] = st.session_state['next']
-    switch_page()
+    show_data(index)
   st.session_state['button_state'] = False
 
 
