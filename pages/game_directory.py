@@ -20,6 +20,7 @@ row3 = st.empty()
 row4 = st.empty()
 list_popular = genre_filtering(options)
 num_of_item = len(list_popular)
+num_of_page = 1 
 
 def show_data(index = 0):
   a = row1.columns(3)
@@ -53,16 +54,21 @@ def switch_page(index):
   
 show_data()
 
-buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,1,1,3])
-num_of_page = 1  
-page_number.markdown(f"""**{num_of_page}**""")
-back_button.button('back', key = 'back', args = str(num_of_page - 1))
-next_button.button('next', key = 'next', args = str(num_of_page + 1))
+def next_func():
+  st.session_state['next'] = num_of_page + 1
 
-if st.session_state('back') == num_of_page - 1 :
+def back_func():
+  st.session_state['back'] == num_of_page - 1  
+
+buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,1,1,3])
+page_number.markdown(f"""**{num_of_page}**""")
+back_button.button('back', on_click = back_func)
+next_button.button('next', on_click = next_func)
+
+if st.session_state['back'] == num_of_page - 1 :
   st.write('back')
     
-if st.session_state('next') == num_of_page + 1:
+if st.session_state['next'] == num_of_page + 1:
   index = int(st.query_params.index)
   num_of_page += 1
   st.write('next')
