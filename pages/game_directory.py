@@ -35,7 +35,9 @@ def show_data(i):
   d = row4.columns(3)
   
   if 'index' not in st.session_state:
-    st.session_state['index'] = str(i) 
+    st.session_state['index'] = str(i)
+  else :
+    switch_page()
     
   index =  int(st.session_state['index'])
   #if st.session_state.get('back') :
@@ -94,7 +96,6 @@ def back_func():
   index = int(st.session_state['index'])
   st.session_state['index'] = str(index - 12)
   st.session_state['page'] = st.session_state['back']
-  switch_page()
   show_data(int(st.session_state['index']))
   st.write('back func')
   st.write(st.session_state['index'])
