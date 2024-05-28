@@ -23,24 +23,24 @@ num_of_item = len(list_popular)
 num_of_page = 1 
 index = 0
 
-def show_data(index):
+def show_data(i):
   a = row1.columns(3)
   b = row2.columns(3)
   c = row3.columns(3)
   d = row4.columns(3)
   for col in a + b + c + d:
     cont = col.container(border = True)
-    title = list_popular.loc[index,'title']
-    cont.image(list_popular.loc[index,'header_image'])
+    title = list_popular.loc[i,'title']
+    cont.image(list_popular.loc[i,'header_image'])
     if cont.button(title, use_container_width = True):
       st.query_params.game_name = title
       st.switch_page("pages/game_details.py")
-    index += 1
+    i = i + 1
     
   if 'index' not in st.session_state:
-    st.session_state.index = index
+    st.session_state.index = i
   else:
-    st.session_state.index = index
+    st.session_state.index = i
   
 def switch_page(index):
   row1.empty()
