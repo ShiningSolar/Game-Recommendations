@@ -43,7 +43,7 @@ def show_data(i):
   index =  int(st.session_state['index'])
   #if st.session_state.get('back') :
     #index = index - 12
-  st.write('index di dalam show_data')
+  st.write('index var di dalam show_data')
   st.write(index)
   
   for col in a + b + c + d:
@@ -61,6 +61,8 @@ def show_data(i):
 
     i = index
     st.session_state['index'] = str(i)
+    st.write('index state di dalam show_data')
+    st.write(st.session_state['index'])
   
 def switch_page():
   row1.empty()
