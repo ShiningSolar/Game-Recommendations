@@ -59,13 +59,16 @@ show_data(index)
 def next_func():
   if 'next' not in st.session_state:
     st.session_state['next'] = 2
+    num_of_page = st.session_state['next']
+    index = int( st.session_state['index'])
+    st.write(index)
+    switch_page(index)
   else :
     num_of_page = st.session_state['next']
     st.session_state['next'] = num_of_page + 1
-  num_of_page = st.session_state['next']
-  index = int( st.session_state['index'])
-  #st.write('next')
-  switch_page(index)
+    index = int( st.session_state['index'])
+    st.write('index')
+    switch_page(index)
 
 
 def back_func():
