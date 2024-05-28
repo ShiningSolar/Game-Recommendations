@@ -41,8 +41,10 @@ def show_data(index = 0):
     st.query_params.index = index
   
 def switch_page(index):
-  del st.session_state['back']
-  del st.session_state['next']  
+  #del st.session_state['back']
+  #del st.session_state['next']  
+  st.session_state['back'] = False
+  st.session_state['next'] = False
   row1.empty()
   row2.empty()
   row3.empty()
