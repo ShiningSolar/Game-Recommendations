@@ -66,13 +66,13 @@ back_button.button('back', on_click = back_func)
 next_button.button('next', on_click = next_func)
 
 if 'back' not in st.session_state:
-  st.session_state['back'] == num_of_page
+  st.session_state['back'] = num_of_page
 else :
   if st.session_state['back'] == num_of_page - 1 :
     st.write('back')
     
 if 'next' not in st.session_state:
-  st.session_state['next'] == num_of_page
+  st.session_state['next'] = num_of_page
 else :
   if st.session_state['next'] == num_of_page + 1:
     index = int(st.query_params.index)
