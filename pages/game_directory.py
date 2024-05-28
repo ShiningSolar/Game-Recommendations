@@ -97,10 +97,10 @@ buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,1,1,3])
 #page_number.markdown(f"""**{num_of_page}**""")
 page_text = page_number.empty()
 if num_of_page == 1:
-  page_text.write(num_of_page)
+  page_text.markdown(f"""{num_of_page}""")
 if st.session_state.get('next') :
   page_text.empty()
-  page_text.write(st.session_state['next'])
+  page_text.markdown((f"""{st.session_state['next']}""")
 back_button.button('back', on_click = back_func)
 next_button.button('next', on_click = next_func)
     
