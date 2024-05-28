@@ -70,3 +70,6 @@ if st.session_state('next') == num_of_page + 1:
 
 st.session_state
 st.write(num_of_item)
+
+
+#make button use on_click, inside onclick function add session state
