@@ -37,14 +37,15 @@ def show_data(i):
   for col in a + b + c + d:
     if index > len(list_popular):
       break
-    cont = col.container(border = True)
-    title = list_popular.loc[index,'title']
-    cont.image(list_popular.loc[index,'header_image'])
-    cont.text(index)
-    if cont.button(title, use_container_width = True):
-      st.query_params.game_name = title
-      st.switch_page("pages/game_details.py")
-    index = index + 1
+    else :
+      cont = col.container(border = True)
+      title = list_popular.loc[index,'title']
+      cont.image(list_popular.loc[index,'header_image'])
+      cont.text(index)
+      if cont.button(title, use_container_width = True):
+        st.query_params.game_name = title
+        st.switch_page("pages/game_details.py")
+      index = index + 1
 
     i = index
     st.session_state['index'] = str(i)
