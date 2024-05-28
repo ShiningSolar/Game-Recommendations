@@ -28,6 +28,10 @@ def show_data(i):
   b = row2.columns(3)
   c = row3.columns(3)
   d = row4.columns(3)
+  
+  if 'index' not in st.session_state:
+    st.session_state.index = i
+    
   for col in a + b + c + d:
     cont = col.container(border = True)
     title = list_popular.loc[i,'title']
@@ -36,10 +40,6 @@ def show_data(i):
       st.query_params.game_name = title
       st.switch_page("pages/game_details.py")
     i = i + 1
-    
-  if 'index' not in st.session_state:
-    st.session_state.index = i
-  else:
     st.session_state.index = i
   
 def switch_page(index):
