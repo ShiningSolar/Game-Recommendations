@@ -38,8 +38,8 @@ def show_data(i):
     st.session_state['index'] = str(i) 
     
   index =  int(st.session_state['index'])
-  if st.session_state.get('back') :
-    index = index - 12
+  #if st.session_state.get('back') :
+    #index = index - 12
   st.write('index di dalam func')
   st.write(index)
   
@@ -91,8 +91,12 @@ def back_func():
   #st.session_state['page'] = st.session_state['back']
   if st.session_state['back'] == 1:
       st.session_state['button_state'] = True
-  switch_page()
+  index = int(st.session_state['index'])
+  st.session_state['index'] = str(index - 12)
   st.session_state['page'] = st.session_state['back']
+  switch_page()
+  show_data(int(st.session_state['index']))
+  
   st.write(st.session_state['index'])
     
 
