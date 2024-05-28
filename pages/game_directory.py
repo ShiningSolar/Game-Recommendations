@@ -96,6 +96,7 @@ def back_func():
   if st.session_state['back'] == 1:
       st.session_state['button_state'] = True
   st.session_state['page'] = st.session_state['back']
+  st.write(index)
     
 
 buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,1,1,3])
