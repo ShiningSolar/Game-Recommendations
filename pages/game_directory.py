@@ -30,17 +30,20 @@ def show_data(i):
   d = row4.columns(3)
   
   if 'index' not in st.session_state:
-    st.session_state.index = i
-    
-  i =  st.session_state.index  
+    st.session_state.index = i  
+  
+  index =  st.session_state.index  
+  
   for col in a + b + c + d:
     cont = col.container(border = True)
-    title = list_popular.loc[i,'title']
-    cont.image(list_popular.loc[i,'header_image'])
+    title = list_popular.loc[index,'title']
+    cont.image(list_popular.loc[index,'header_image'])
     if cont.button(title, use_container_width = True):
       st.query_params.game_name = title
       st.switch_page("pages/game_details.py")
-    i = i + 1
+    index = index + 1
+
+    i = index
     st.session_state.index = i
   
 def switch_page(index):
