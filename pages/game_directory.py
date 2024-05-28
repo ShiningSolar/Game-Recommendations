@@ -111,7 +111,7 @@ if st.session_state.get('back') :
   page_text.empty()
   page_text.markdown(f"""{st.session_state['back']}""")
 
-back_button.button('back', on_click = back_func, disabled = button_state)
+back_button.button('back', on_click = back_func, disabled = False)
 next_button.button('next', on_click = next_func)
     
 
