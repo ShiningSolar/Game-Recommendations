@@ -37,8 +37,8 @@ def show_data(i):
   if 'index' not in st.session_state:
     st.session_state['index'] = str(i)
 
-  if st.session_state['page'] > 1 :
-    switch_page()
+  #if st.session_state['page'] > 1 :
+    #switch_page()
     
   index =  int(st.session_state['index'])
   #if st.session_state.get('back') :
