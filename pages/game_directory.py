@@ -57,7 +57,7 @@ def switch_page(index):
   row4.empty()
   #show_data(index)
   
-show_data(index)
+show_data(879)
 
 def next_func():
   if 'next' not in st.session_state:
