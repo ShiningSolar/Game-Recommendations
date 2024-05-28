@@ -59,10 +59,10 @@ def show_data(i):
     else :
       break
 
-    i = index
-    st.session_state['index'] = str(i)
-    st.write('index state di dalam show_data')
-    st.write(st.session_state['index'])
+  i = index
+  st.session_state['index'] = str(i)
+  st.write('index state di dalam show_data')
+  st.write(st.session_state['index'])
   
 def switch_page():
   row1.empty()
