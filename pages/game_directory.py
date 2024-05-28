@@ -23,8 +23,6 @@ num_of_item = len(list_popular)
 #num_of_page = 1
 
 def show_data(index = 0, num = 1):
-  del st.session_state['back']
-  del st.session_state['next'] 
   a = row1.columns(3)
   b = row2.columns(3)
   c = row3.columns(3)
@@ -45,7 +43,8 @@ def show_data(index = 0, num = 1):
     
   buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,1,1,3])
   num_of_page = num
-    
+  del st.session_state['back']
+  del st.session_state['next']   
   page_number.markdown(f"""**{num_of_page}**""")
   back_button.button('back', key = 'back')
   next_button.button('next', key = 'next')
