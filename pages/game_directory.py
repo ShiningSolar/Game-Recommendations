@@ -32,6 +32,7 @@ def show_data(i):
   if 'index' not in st.session_state:
     st.session_state.index = i
     
+  i =  st.session_state.index  
   for col in a + b + c + d:
     cont = col.container(border = True)
     title = list_popular.loc[i,'title']
