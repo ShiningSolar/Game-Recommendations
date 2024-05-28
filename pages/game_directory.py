@@ -109,7 +109,7 @@ if st.session_state.get('next') :
 
 if st.session_state.get('back') :
   index = int(st.session_state['index'])
-  st.session_state['index'] = index - 12
+  st.session_state['index'] = int(index - 12)
   st.write('index di dalam state back')
   st.write(st.session_state['index'])
   page_text.empty()
