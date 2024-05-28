@@ -53,7 +53,6 @@ def show_data(i):
 
     i = index
     st.session_state['index'] = str(i)
-    page_num
   
 def switch_page(index):
   row1.empty()
