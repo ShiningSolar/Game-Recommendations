@@ -35,9 +35,11 @@ def show_data(i):
   d = row4.columns(3)
   
   if 'index' not in st.session_state:
-    st.session_state['index'] = str(i)  
-  
+    st.session_state['index'] = str(i) 
+    
   index =  int(st.session_state['index'])
+  if st.session_state.get('back') :
+    index = index - 12
   st.write('index di dalam func')
   st.write(index)
   
@@ -108,8 +110,6 @@ if st.session_state.get('next') :
   page_text.markdown(f"""{st.session_state['next']}""")
 
 if st.session_state.get('back') :
-  index = int(st.session_state['index'])
-  st.session_state['index'] = int(index - 12)
   st.write('index di dalam state back')
   st.write(st.session_state['index'])
   page_text.empty()
