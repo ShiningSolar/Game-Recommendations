@@ -53,29 +53,30 @@ def switch_page():
 show_data()
 
 def next_func():
-  st.session_state['next'] = num_of_page + 1
+  if 'next' not in st.session_state:
+    st.session_state['next'] = num_of_page
+  else :
+    st.session_state['next'] = num_of_page + 1
+    if st.session_state['next'] == num_of_page + 1:
+      num_of_page = st.session_state['next']
+      st.write('next')
+      switch_page()
+
 
 def back_func():
-  st.session_state['back'] == num_of_page - 1  
+  if 'back' not in st.session_state:
+    st.session_state['back'] = num_of_page
+  else :
+    st.session_state['back'] == num_of_page - 1
+    if st.session_state['back'] == num_of_page - 1 :
+      st.write('back')
+    
 
 buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,1,1,3])
 page_number.markdown(f"""**{num_of_page}**""")
 back_button.button('back', on_click = back_func)
 next_button.button('next', on_click = next_func)
-
-if 'back' not in st.session_state:
-  st.session_state['back'] = num_of_page
-else :
-  if st.session_state['back'] == num_of_page - 1 :
-    st.write('back')
     
-if 'next' not in st.session_state:
-  st.session_state['next'] = num_of_page
-else :
-  if st.session_state['next'] == num_of_page + 1:
-    num_of_page = st.session_state['next']
-    st.write('next')
-    switch_page()
 
 st.session_state
 st.write(num_of_item)
