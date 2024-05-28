@@ -5,6 +5,10 @@ from func_var import genre_filtering
 st.title("Daftar Game")
 genres = ["Racing", "Adventure", "Sports", "Strategy", "Casual", "RPG", "Simulation", "Action", "Indie"]
 
+def genre_change():
+  st.write('genre change')
+  st.session_state['index'] = 0
+
 options = st.multiselect(
   "What are your favorite colors",
   options = genres,
@@ -23,10 +27,6 @@ list_popular = genre_filtering(options)
 num_of_item = len(list_popular)
 num_of_page = 1 
 index = 0
-
-def genre_change():
-  st.write('genre change')
-  st.session_state['index'] = 0
 
 def show_data(i):
   a = row1.columns(3)
