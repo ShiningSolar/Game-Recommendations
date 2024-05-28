@@ -42,12 +42,11 @@ def show_data(index = 0):
     st.query_params.index = index
   st.session_state.x = int(st.query_params.index)
   
-def switch_page():
+def switch_page(index):
   row1.empty()
   row2.empty()
   row3.empty()
   row4.empty()
-  index = st.session_state.x
   show_data(index)
   
 show_data()
@@ -59,8 +58,9 @@ def next_func():
     num_of_page = st.session_state['next']
     st.session_state['next'] = num_of_page + 1
   num_of_page = st.session_state['next']
+  index = st.session_state.x
   st.write('next')
-  switch_page()
+  switch_page(index)
 
 
 def back_func():
