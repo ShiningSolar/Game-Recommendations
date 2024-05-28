@@ -37,10 +37,10 @@ def show_data(index):
       st.switch_page("pages/game_details.py")
     index += 1
     
-  if 'index' not in st.query_params:
-    st.query_params.index = index
+  if 'index' not in st.session_state:
+    st.session_state.index = index
   else:
-    st.query_params.index = index
+    st.session_state.index = index
   
 def switch_page(index):
   row1.empty()
@@ -58,7 +58,7 @@ def next_func():
     num_of_page = st.session_state['next']
     st.session_state['next'] = num_of_page + 1
   num_of_page = st.session_state['next']
-  index = int(st.query_params.index)
+  index = int( st.session_state.index)
   #st.write('next')
   switch_page(index)
 
