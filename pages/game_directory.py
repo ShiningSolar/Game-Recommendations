@@ -35,9 +35,7 @@ def show_data(i):
   index =  int(st.session_state['index'])
   
   for col in a + b + c + d:
-    if index > len(list_popular):
-      break
-    else :
+    if index < len(list_popular):
       cont = col.container(border = True)
       title = list_popular.loc[index,'title']
       cont.image(list_popular.loc[index,'header_image'])
@@ -46,6 +44,8 @@ def show_data(i):
         st.query_params.game_name = title
         st.switch_page("pages/game_details.py")
       index = index + 1
+    else :
+      break
 
     i = index
     st.session_state['index'] = str(i)
