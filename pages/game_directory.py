@@ -69,10 +69,6 @@ def switch_page():
   row4.empty()
   #show_data(index)
 
-
-show_data(index)
-
-
 def next_func():
   if 'next' not in st.session_state:
     st.session_state['next'] = 2
@@ -108,6 +104,7 @@ page_text = page_number.empty()
 
 if 'page' not in st.session_state:
   st.session_state['page'] = num_of_page
+  show_data(index)
   page_text.markdown(f"""{num_of_page}""")
   st.session_state['button_state'] = True
   
@@ -130,3 +127,4 @@ st.session_state
 
 
 #make button use on_click, inside onclick function add session state
+#still haven't figure it out how button works
