@@ -34,6 +34,7 @@ def show_data(index = 0):
       st.query_params.game_name = title
       st.switch_page("pages/game_details.py")
     index = index + 1
+    
   if 'index' not in st.query_params:
     st.query_params.index = index
   else:
@@ -50,6 +51,7 @@ def show_data(index = 0):
     num_of_page += 1
     st.write('next')
     switch_page(index)
+    st.session_state['next'] = False
     
   page_number.markdown(f"""**{num_of_page}**""")
   back_button.button('back', key = 'back')
