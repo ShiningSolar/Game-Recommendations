@@ -56,8 +56,8 @@ show_data()
 buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,1,1,3])
 num_of_page = 1  
 page_number.markdown(f"""**{num_of_page}**""")
-back_button.button('back', key = 'back', num_of_page - 1)
-next_button.button('next', key = 'next', num_of_page + 1)
+back_button.button('back', key = 'back', str(num_of_page - 1))
+next_button.button('next', key = 'next', str(num_of_page + 1))
 
 if st.session_state('back') == num_of_page - 1 :
   st.write('back')
