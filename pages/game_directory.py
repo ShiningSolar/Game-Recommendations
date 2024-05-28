@@ -40,7 +40,7 @@ def show_data(i):
   index =  int(st.session_state['index'])
   #if st.session_state.get('back') :
     #index = index - 12
-  st.write('index di dalam func')
+  st.write('index di dalam show_data')
   st.write(index)
   
   for col in a + b + c + d:
@@ -96,7 +96,7 @@ def back_func():
   st.session_state['page'] = st.session_state['back']
   switch_page()
   show_data(int(st.session_state['index']))
-  
+  st.write('back func')
   st.write(st.session_state['index'])
     
 
@@ -114,8 +114,8 @@ if st.session_state.get('next') :
   page_text.markdown(f"""{st.session_state['next']}""")
 
 if st.session_state.get('back') :
-  st.write('index di dalam state back')
-  st.write(st.session_state['index'])
+  #st.write('index di dalam state back')
+  #st.write(st.session_state['index'])
   page_text.empty()
   page_text.markdown(f"""{st.session_state['back']}""")
 
