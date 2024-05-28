@@ -54,8 +54,9 @@ show_data()
 
 def next_func():
   if 'next' not in st.session_state:
-    st.session_state['next'] = num_of_page
+    st.session_state['next'] = 1
   else :
+    num_of_page = st.session_state['next']
     st.session_state['next'] = num_of_page + 1
     if st.session_state['next'] == num_of_page + 1:
       num_of_page = st.session_state['next']
@@ -65,8 +66,9 @@ def next_func():
 
 def back_func():
   if 'back' not in st.session_state:
-    st.session_state['back'] = num_of_page
+    st.session_state['back'] = 1
   else :
+    num_of_page = st.session_state['back']
     st.session_state['back'] == num_of_page - 1
     if st.session_state['back'] == num_of_page - 1 :
       st.write('back')
