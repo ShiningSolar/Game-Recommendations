@@ -50,11 +50,10 @@ def show_data(index = 0, num = 1):
     index = int(st.query_params.index)
     num_of_page += 1
     st.write('next')
-    del st.session_state['back']
-    del st.session_state['next']
     switch_page(index, num_of_page)
     
-    
+  del st.session_state['back']
+  del st.session_state['next']  
   page_number.markdown(f"""**{num_of_page}**""")
   back_button.button('back', key = 'back')
   next_button.button('next', key = 'next')
