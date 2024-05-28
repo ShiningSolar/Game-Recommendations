@@ -43,7 +43,7 @@ def show_data(index = 0):
 def switch_page(index):
   #del st.session_state['back']
   #del st.session_state['next']  
-  st.session_state['back'] = False
+  #st.session_state['back'] = False
   st.session_state['next'] = False
   row1.empty()
   row2.empty()
