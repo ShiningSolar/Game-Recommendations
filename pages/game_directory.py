@@ -38,6 +38,22 @@ def show_data(index = 0):
     st.query_params.index = index
   else:
     st.query_params.index = index
+  buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,0.5,1,3])
+  num_of_page = 1
+  num_of_item = len(list_popular)
+
+  if st.session_state.get('back'):
+    st.write('back')
+    
+  if st.session_state.get('next'):
+    index = int(st.query_params.index)
+    num_of_page += 1
+    st.write('next')
+    switch_page(index)
+    
+  page_number.markdown(f"""**{num_of_page}**""")
+  back_button.button('back', key = 'back')
+  next_button.button('next', key = 'next')
   
 def switch_page(index):
   row1.empty()
@@ -49,22 +65,9 @@ def switch_page(index):
 show_data()
 
 
-buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,0.5,1,3])
-num_of_page = 1
-num_of_item = len(list_popular)
 
-if st.session_state.get('back'):
-  st.write('back')
   
-if st.session_state.get('next'):
-  index = int(st.query_params.index)
-  num_of_page += 1
-  st.write('next')
-  switch_page(index)
-  
-page_number.markdown(f"""**{num_of_page}**""")
-back_button.button('back', key = 'back')
-next_button.button('next', key = 'next')
+
 
 
 st.session_state
