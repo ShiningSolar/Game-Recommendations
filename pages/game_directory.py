@@ -10,7 +10,8 @@ options = st.multiselect(
   options = genres,
   default = None,
   placeholder = "Pilih genre game yang diinginkan",
-  label_visibility = "collapsed"
+  label_visibility = "collapsed",
+  on_change = genre_change
 )
 
 #st.write("You selected:", options)
@@ -22,6 +23,10 @@ list_popular = genre_filtering(options)
 num_of_item = len(list_popular)
 num_of_page = 1 
 index = 0
+
+def genre_change():
+  st.write('genre change')
+  st.session_state['index'] = 0
 
 def show_data(i):
   a = row1.columns(3)
@@ -56,8 +61,10 @@ def switch_page(index):
   row3.empty()
   row4.empty()
   #show_data(index)
-  
+
+
 show_data(index)
+
 
 def next_func():
   if 'next' not in st.session_state:
