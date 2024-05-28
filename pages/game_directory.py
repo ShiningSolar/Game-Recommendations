@@ -38,6 +38,8 @@ def show_data(i):
     st.session_state['index'] = str(i)  
   
   index =  int(st.session_state['index'])
+  st.write('index di dalam func')
+  st.write(index)
   
   for col in a + b + c + d:
     if index < len(list_popular):
