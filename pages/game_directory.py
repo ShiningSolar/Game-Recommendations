@@ -30,9 +30,9 @@ def show_data(i):
   d = row4.columns(3)
   
   if 'index' not in st.session_state:
-    st.session_state.index = str(i)  
+    st.session_state['index'] = str(i)  
   
-  index =  int(st.session_state.index)
+  index =  int(st.session_state['index'])
   
   for col in a + b + c + d:
     cont = col.container(border = True)
@@ -44,7 +44,7 @@ def show_data(i):
     index = index + 1
 
     i = index
-    st.session_state.index = str(i)
+    st.session_state.['index'] = str(i)
   
 def switch_page(index):
   row1.empty()
@@ -62,7 +62,7 @@ def next_func():
     num_of_page = st.session_state['next']
     st.session_state['next'] = num_of_page + 1
   num_of_page = st.session_state['next']
-  index = int( st.session_state.index)
+  index = int( st.session_state['index'])
   #st.write('next')
   switch_page(index)
 
