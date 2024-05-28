@@ -57,7 +57,7 @@ def next_func():
     num_of_page = st.session_state['next']
     st.session_state['next'] = num_of_page + 1
   num_of_page = st.session_state['next']
-  index = st.query_params.index
+  index = int(st.query_params.index)
   st.write('next')
   switch_page(index)
 
