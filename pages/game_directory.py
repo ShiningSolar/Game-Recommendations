@@ -21,8 +21,9 @@ row4 = st.empty()
 list_popular = genre_filtering(options)
 num_of_item = len(list_popular)
 num_of_page = 1 
+index = 0
 
-def show_data(index = 0):
+def show_data(index):
   a = row1.columns(3)
   b = row2.columns(3)
   c = row3.columns(3)
@@ -34,7 +35,7 @@ def show_data(index = 0):
     if cont.button(title, use_container_width = True):
       st.query_params.game_name = title
       st.switch_page("pages/game_details.py")
-    index = index + 1
+    index += 1
     
   if 'index' not in st.query_params:
     st.query_params.index = index
@@ -48,7 +49,7 @@ def switch_page(index):
   row4.empty()
   show_data(index)
   
-show_data()
+show_data(index)
 
 def next_func():
   if 'next' not in st.session_state:
@@ -58,7 +59,7 @@ def next_func():
     st.session_state['next'] = num_of_page + 1
   num_of_page = st.session_state['next']
   index = int(st.query_params.index)
-  st.write('next')
+  #st.write('next')
   switch_page(index)
 
 
