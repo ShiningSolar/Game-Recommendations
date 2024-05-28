@@ -116,6 +116,8 @@ if 'page' not in st.session_state :
   st.session_state['button_state'] = True
 elif st.session_state.get('page') :
   index = int(st.session_state['index'])
+  st.write('index var in get index')
+  st.write(index)
   show_data(index)
   
 if st.session_state.get('next') :
