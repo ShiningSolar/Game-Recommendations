@@ -45,6 +45,11 @@ def show_data(index = 0, num = 1):
     
   buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,1,1,3])
   num_of_page = num
+    
+  page_number.markdown(f"""**{num_of_page}**""")
+  back_button.button('back', key = 'back')
+  next_button.button('next', key = 'next')
+
   if st.session_state.get('back'):
     st.write('back')
     
@@ -53,10 +58,6 @@ def show_data(index = 0, num = 1):
     num_of_page += 1
     st.write('next')
     switch_page(index, num_of_page)
-    
-  page_number.markdown(f"""**{num_of_page}**""")
-  back_button.button('back', key = 'back')
-  next_button.button('next', key = 'next')
   
 def switch_page(index, num):
   row1.empty()
