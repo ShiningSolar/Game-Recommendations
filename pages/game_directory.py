@@ -86,11 +86,11 @@ def next_func():
 def back_func():
   num_of_page = st.session_state['page']
   st.session_state['back'] = num_of_page -1
-  index = int(st.session_state['index'])-12
+  index = int(st.session_state['index'])
   #st.session_state['page'] = st.session_state['back']
   if st.session_state['back'] == 1:
       st.session_state['button_state'] = True
-  st.session_state['index'] = index
+  st.session_state['index'] = index - 12
   switch_page()
   st.session_state['page'] = st.session_state['back']
   st.write(index)
