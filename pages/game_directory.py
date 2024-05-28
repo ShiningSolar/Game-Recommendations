@@ -93,7 +93,7 @@ def back_func():
   st.session_state['index'] = index - 12
   switch_page()
   st.session_state['page'] = st.session_state['back']
-  st.write(index)
+  st.write(st.session_state['index'])
     
 
 buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,1,1,3])
