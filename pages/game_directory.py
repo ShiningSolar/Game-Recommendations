@@ -76,7 +76,7 @@ if 'next' not in st.session_state:
 else :
   if st.session_state['next'] == num_of_page + 1:
     index = int(st.query_params.index)
-    num_of_page += 1
+    num_of_page = st.session_state['next']
     st.write('next')
     switch_page(index)
 
