@@ -86,11 +86,9 @@ def next_func():
 def back_func():
   num_of_page = st.session_state['page']
   st.session_state['back'] = num_of_page -1
-  index = int(st.session_state['index'])
   #st.session_state['page'] = st.session_state['back']
   if st.session_state['back'] == 1:
       st.session_state['button_state'] = True
-  st.session_state['index'] = index - 12
   switch_page()
   st.session_state['page'] = st.session_state['back']
   st.write(st.session_state['index'])
@@ -110,6 +108,10 @@ if st.session_state.get('next') :
   page_text.markdown(f"""{st.session_state['next']}""")
 
 if st.session_state.get('back') :
+  index = int(st.session_state['index'])
+  st.session_state['index'] = index - 12
+  st.write('index di dalam state back')
+  st.write(st.session_state['index'])
   page_text.empty()
   page_text.markdown(f"""{st.session_state['back']}""")
 
