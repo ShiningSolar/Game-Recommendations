@@ -18,8 +18,9 @@ def change_page(name):
   st.session_state['name'] = name
   st.session_state['details_page'] = True
 
-if st.session_state.get('details_page'):
+if st.session_state['details_page'] == True:
   st.query_params.game_name = st.session_state['name']
+  st.session_state['details_page'] = False
   st.switch_page("pages/game_details.py")
   
 def show_data(i):
