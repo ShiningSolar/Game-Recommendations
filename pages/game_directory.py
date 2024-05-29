@@ -58,11 +58,11 @@ def show_data(i):
   i = index
   st.session_state['index'] = str(i)
   
-def switch_page():
-  row1.empty()
-  row2.empty()
-  row3.empty()
-  row4.empty()
+#def switch_page():
+#  row1.empty()
+#  row2.empty()
+#  row3.empty()
+#  row4.empty()
 
 def next_func():
   if 'next' not in st.session_state:
