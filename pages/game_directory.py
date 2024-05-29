@@ -9,6 +9,7 @@ def genre_change():
   st.write('genre change')
   st.session_state['index'] = 0
   st.session_state['page'] = 1
+  st.session_state['next_button_state'] = False
 
 options = st.multiselect(
   "What are your favorite colors",
