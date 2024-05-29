@@ -129,3 +129,4 @@ next_button.button('next', on_click = next_func, disabled = st.session_state['ne
 st.session_state
 
 #how to pevent index terus betambah tanpa mengklik apapun
+#change var i to var index in show_data()
