@@ -2,8 +2,10 @@ import streamlit as st
 import pandas as pd
 from func_var import genre_filtering
 
-st.title("Daftar Game")
 genres = ["Racing", "Adventure", "Sports", "Strategy", "Casual", "RPG", "Simulation", "Action", "Indie"]
+list_popular = genre_filtering(options)
+num_of_page = 1 
+index = 0
 
 def genre_change():
   st.session_state['index'] = 0
@@ -11,29 +13,15 @@ def genre_change():
   st.session_state['next_button_state'] = False
   st.session_state['back_button_state'] = True
 
-options = st.multiselect(
-  "What are your favorite colors",
-  options = genres,
-  default = None,
-  placeholder = "Pilih genre game yang diinginkan",
-  label_visibility = "collapsed",
-  on_change = genre_change
-)
-
-#st.write("You selected:", options)
-row1 = st.empty()
-row2 = st.empty()
-row3 = st.empty()
-row4 = st.empty()
-list_popular = genre_filtering(options)
-num_of_page = 1 
-index = 0
-
 def change_page(name):
   st.write(name)
-  st.query_params.game_name = name
-  st.switch_page("pages/game_details.py")
+  st.session_state['name'] = name
+  st.session_state['details_page'] = True
 
+if st.session_state.get('details_page'):
+  st.query_params.game_name = st.session_state['name']
+  st.switch_page("pages/game_details.py")
+  
 def show_data(i):
   a = row1.columns(3)
   b = row2.columns(3)
@@ -59,12 +47,6 @@ def show_data(i):
 
   i = index
   st.session_state['index'] = str(i)
-  
-#def switch_page():
-#  row1.empty()
-#  row2.empty()
-#  row3.empty()
-#  row4.empty()
 
 def next_func():
   if 'next' not in st.session_state:
@@ -89,7 +71,23 @@ def back_func():
   st.session_state['index'] = str(index)
   st.session_state['page'] = st.session_state['back']
   st.session_state['next_button_state'] = False
-    
+ 
+
+options = st.multiselect(
+  "What are your favorite colors",
+  options = genres,
+  default = None,
+  placeholder = "Pilih genre game yang diinginkan",
+  label_visibility = "collapsed",
+  on_change = genre_change
+)
+
+
+st.title("Daftar Game")
+row1 = st.empty()
+row2 = st.empty()
+row3 = st.empty()
+row4 = st.empty()   
 
 buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,1,1,3])
 page_text = page_number.empty()
