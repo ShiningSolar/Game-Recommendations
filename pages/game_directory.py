@@ -111,6 +111,7 @@ elif 'page' in st.session_state :
 #  st.session_state['back'] = st.session_state['page']
 #  index = int(st.session_state['index'])
   page_text.markdown(f"""{st.session_state['page']}""")
+  st.session_state['index'] = 0
   show_data(0)
   
 if st.session_state.get('next') :
