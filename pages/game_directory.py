@@ -86,11 +86,10 @@ def next_func():
 def back_func():
   num_of_page = st.session_state['page']
   st.session_state['back'] = num_of_page -1
-  #st.session_state['page'] = st.session_state['back']
   if st.session_state['back'] == 1:
       st.session_state['back_button_state'] = True
   index = int(st.session_state['index'])
-  index = index - 24
+  index = index - 24 + ((12 * num_of_page) - index)
   st.session_state['index'] = str(index)
   st.session_state['page'] = st.session_state['back']
   st.session_state['next_button_state'] = False
