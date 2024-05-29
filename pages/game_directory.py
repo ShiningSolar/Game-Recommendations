@@ -29,6 +29,11 @@ list_popular = genre_filtering(options)
 num_of_page = 1 
 index = 0
 
+def change_page(name):
+  st.write(name)
+  st.query_params.game_name = name
+  st.switch_page("pages/game_details.py")
+
 def show_data(i):
   a = row1.columns(3)
   b = row2.columns(3)
@@ -45,10 +50,7 @@ def show_data(i):
       cont = col.container(border = True)
       title = list_popular.loc[index,'title']
       cont.image(list_popular.loc[index,'header_image'])
-      if cont.button(title, use_container_width = True):
-        st.session_state['name'] = title
-        st.query_params.game_name = title
-        st.switch_page("pages/game_details.py")
+      cont.button(title, on_click = change_page, args = (title), use_container_width = True)
         
       index = index + 1
     else :
