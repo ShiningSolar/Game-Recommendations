@@ -107,9 +107,9 @@ if 'page' not in st.session_state :
   st.session_state['back_button_state'] = True
   st.session_state['next_button_state'] = False
 elif st.session_state.get('page') :
-  st.session_state['next'] = st.session_state['page']
-  st.session_state['back'] = st.session_state['page']
-  index = int(st.session_state['index'])
+#  st.session_state['next'] = st.session_state['page']
+#  st.session_state['back'] = st.session_state['page']
+#  index = int(st.session_state['index'])
   show_data(index)
   
 if st.session_state.get('next') :
