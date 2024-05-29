@@ -46,7 +46,7 @@ def show_data(i):
       title = list_popular.loc[index,'title']
       cont.image(list_popular.loc[index,'header_image'])
       if cont.button(title, use_container_width = True):
-        st.write(title)
+        st.session_state['name'] = title
         st.query_params.game_name = title
         st.switch_page("pages/game_details.py")
         
