@@ -37,8 +37,8 @@ def show_data(i):
   
   if 'index' not in st.session_state:
     st.session_state['index'] = str(i)
-    
-   =  int(st.session_state[''])
+  
+  index = int(st.session_state['index'])
   
   for col in a + b + c + d:
     if index < len(list_popular):
