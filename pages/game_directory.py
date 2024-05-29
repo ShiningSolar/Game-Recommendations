@@ -6,7 +6,6 @@ st.title("Daftar Game")
 genres = ["Racing", "Adventure", "Sports", "Strategy", "Casual", "RPG", "Simulation", "Action", "Indie"]
 
 def genre_change():
-  st.write('genre change')
   st.session_state['index'] = 0
   st.session_state['page'] = 1
   st.session_state['next_button_state'] = False
@@ -39,17 +38,13 @@ def show_data(i):
   if 'index' not in st.session_state:
     st.session_state['index'] = str(i)
     
-  index =  int(st.session_state['index'])
-
-  st.write('index var di dalam show_data')
-  st.write(index)
+   =  int(st.session_state[''])
   
   for col in a + b + c + d:
     if index < len(list_popular):
       cont = col.container(border = True)
       title = list_popular.loc[index,'title']
       cont.image(list_popular.loc[index,'header_image'])
-      cont.text(index)
       if cont.button(title, use_container_width = True):
         st.query_params.game_name = title
         st.switch_page("pages/game_details.py")
@@ -60,15 +55,12 @@ def show_data(i):
 
   i = index
   st.session_state['index'] = str(i)
-  st.write('index state di dalam show_data')
-  st.write(st.session_state['index'])
   
 def switch_page():
   row1.empty()
   row2.empty()
   row3.empty()
   row4.empty()
-  #show_data(index)
 
 def next_func():
   if 'next' not in st.session_state:
@@ -93,10 +85,6 @@ def back_func():
   st.session_state['index'] = str(index)
   st.session_state['page'] = st.session_state['back']
   st.session_state['next_button_state'] = False
-  st.write('index var in back func')
-  st.write(index)
-  st.write('index state in back func')
-  st.write(st.session_state['index'])
     
 
 buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,1,1,3])
@@ -112,8 +100,6 @@ elif st.session_state.get('page') :
   st.session_state['next'] = st.session_state['page']
   st.session_state['back'] = st.session_state['page']
   index = int(st.session_state['index'])
-  st.write('index var in get index')
-  st.write(index)
   show_data(index)
   
 if st.session_state.get('next') :
@@ -129,7 +115,3 @@ next_button.button('next', on_click = next_func, disabled = st.session_state['ne
     
 
 st.session_state
-
-
-#make button use on_click, inside onclick function add session state
-#still haven't figure it out how button works
