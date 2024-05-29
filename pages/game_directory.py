@@ -8,6 +8,7 @@ genres = ["Racing", "Adventure", "Sports", "Strategy", "Casual", "RPG", "Simulat
 def genre_change():
   st.write('genre change')
   st.session_state['index'] = 0
+  st.session_state['page'] = 1
 
 options = st.multiselect(
   "What are your favorite colors",
@@ -24,7 +25,6 @@ row2 = st.empty()
 row3 = st.empty()
 row4 = st.empty()
 list_popular = genre_filtering(options)
-num_of_item = len(list_popular)
 num_of_page = 1 
 index = 0
 
@@ -36,13 +36,9 @@ def show_data(i):
   
   if 'index' not in st.session_state:
     st.session_state['index'] = str(i)
-
-  #if st.session_state['page'] > 1 :
-    #switch_page()
     
   index =  int(st.session_state['index'])
-  #if st.session_state.get('back') :
-    #index = index - 12
+
   st.write('index var di dalam show_data')
   st.write(index)
   
@@ -57,6 +53,7 @@ def show_data(i):
         st.switch_page("pages/game_details.py")
       index = index + 1
     else :
+      st.session_state['next_button_state'] = True
       break
 
   i = index
@@ -76,16 +73,12 @@ def next_func():
     st.session_state['next'] = 2
     st.session_state['page'] = st.session_state['next']
     index = int( st.session_state['index'])
-    #switch_page()
-    #show_data(index)
   else :
     num_of_page = st.session_state['next']
     st.session_state['next'] = num_of_page + 1
     index = int( st.session_state['index'])
     st.session_state['page'] = st.session_state['next']
-    #switch_page()
-    #show_data(index)
-  st.session_state['button_state'] = False
+  st.session_state['back_button_state'] = False
 
 
 def back_func():
@@ -93,13 +86,11 @@ def back_func():
   st.session_state['back'] = num_of_page -1
   #st.session_state['page'] = st.session_state['back']
   if st.session_state['back'] == 1:
-      st.session_state['button_state'] = True
+      st.session_state['back_button_state'] = True
   index = int(st.session_state['index'])
   index = index - 24
   st.session_state['index'] = str(index)
   st.session_state['page'] = st.session_state['back']
-  #switch_page()
-  #show_data(int(st.session_state['index']))
   st.write('index var in back func')
   st.write(index)
   st.write('index state in back func')
@@ -107,14 +98,14 @@ def back_func():
     
 
 buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,1,1,3])
-#page_number.markdown(f"""**{num_of_page}**""")
 page_text = page_number.empty()
 
 if 'page' not in st.session_state :
   st.session_state['page'] = num_of_page
   show_data(index)
   page_text.markdown(f"""{num_of_page}""")
-  st.session_state['button_state'] = True
+  st.session_state['back_button_state'] = True
+  st.session_state['next_button_state'] = False
 elif st.session_state.get('page') :
   st.session_state['next'] = st.session_state['page']
   st.session_state['back'] = st.session_state['page']
@@ -128,17 +119,14 @@ if st.session_state.get('next') :
   page_text.markdown(f"""{st.session_state['next']}""")
 
 if st.session_state.get('back') :
-  #st.write('index di dalam state back')
-  #st.write(st.session_state['index'])
   page_text.empty()
   page_text.markdown(f"""{st.session_state['back']}""")
 
-back_button.button('back', on_click = back_func, disabled = st.session_state['button_state'])
-next_button.button('next', on_click = next_func)
+back_button.button('back', on_click = back_func, disabled = st.session_state['back_button_state'])
+next_button.button('next', on_click = next_func, disabled = st.session_state['next_button_state'])
     
 
 st.session_state
-#st.write(num_of_item)
 
 
 #make button use on_click, inside onclick function add session state
