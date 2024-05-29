@@ -18,6 +18,9 @@ def change_page(name):
   st.session_state['name'] = name
   st.session_state['details_page'] = True
 
+if 'details_page' not in st.session_state :
+  st.session_state['details_page'] = False
+
 if st.session_state['details_page'] == True:
   st.query_params.game_name = st.session_state['name']
   st.session_state['details_page'] = False
