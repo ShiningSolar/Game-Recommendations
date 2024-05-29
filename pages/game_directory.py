@@ -50,7 +50,7 @@ def show_data(i):
       cont = col.container(border = True)
       title = list_popular.loc[index,'title']
       cont.image(list_popular.loc[index,'header_image'])
-      cont.button(title, on_click = change_page, args = (title), use_container_width = True)
+      cont.button(title, on_click = change_page, args = [title], use_container_width = True)
         
       index = index + 1
     else :
