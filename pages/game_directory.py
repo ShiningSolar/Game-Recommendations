@@ -3,7 +3,7 @@ import pandas as pd
 from func_var import genre_filtering
 
 genres = ["Racing", "Adventure", "Sports", "Strategy", "Casual", "RPG", "Simulation", "Action", "Indie"]
-list_popular = genre_filtering(options)
+
 num_of_page = 1 
 index = 0
 
@@ -81,6 +81,8 @@ options = st.multiselect(
   label_visibility = "collapsed",
   on_change = genre_change
 )
+
+list_popular = genre_filtering(options)
 
 
 st.title("Daftar Game")
