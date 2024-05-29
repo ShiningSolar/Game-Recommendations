@@ -10,6 +10,7 @@ def genre_change():
   st.session_state['index'] = 0
   st.session_state['page'] = 1
   st.session_state['next_button_state'] = False
+  st.session_state['back_button_state'] = True
 
 options = st.multiselect(
   "What are your favorite colors",
@@ -92,6 +93,7 @@ def back_func():
   index = index - 24
   st.session_state['index'] = str(index)
   st.session_state['page'] = st.session_state['back']
+  st.session_state['next_button_state'] = False
   st.write('index var in back func')
   st.write(index)
   st.write('index state in back func')
