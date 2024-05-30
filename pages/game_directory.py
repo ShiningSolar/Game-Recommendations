@@ -88,6 +88,7 @@ multiselect = st.empty()
 if 'list_genre' not in st.session_state :
   st.session_state['list_genre'] = []
   selected_genres = st.session_state['list_genre']
+  st.write(selected_genres)
   genre_options = multiselect.multiselect(
     "What are your favorite colors",
     options = genres,
@@ -98,6 +99,7 @@ if 'list_genre' not in st.session_state :
   )
 elif 'list_genre' in st.session_state :
   selected_genres = st.session_state['list_genre']
+  st.write(selected_genres)
   genre_options = multiselect.multiselect(
     "What are your favorite colors",
     options = genres,
