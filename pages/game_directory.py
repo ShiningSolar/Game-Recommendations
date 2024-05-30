@@ -85,7 +85,8 @@ def back_func():
  
 if 'list_genre' not in st.session_state :
   st.session_state['list_genre'] = []
-elif 'list_genre' in st.session_state :
+
+if 'list_genre' in st.session_state :
   selected_genres = st.session_state['list_genre']
   genre_options = st.multiselect(
     "What are your favorite colors",
