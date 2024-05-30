@@ -16,6 +16,7 @@ def genre_change():
   st.session_state['back'] = 1
   st.session_state['next_button_state'] = False
   st.session_state['back_button_state'] = True
+  return
 
 def change_page(name):
   st.write(name)
