@@ -95,7 +95,7 @@ genre_options = st.multiselect(
   on_change = genre_change
 )
 
-list_popular = genre_filtering(options)
+list_popular = genre_filtering(genre_options)
 
 st.title("Daftar Game")
 row1 = st.empty()
