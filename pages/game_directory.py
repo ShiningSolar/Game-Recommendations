@@ -89,7 +89,7 @@ multiselect = st.empty()
 genre_options = multiselect.multiselect(
     "What are your favorite colors",
     options = genres,
-    default = selected_genres,
+    default = None,
     placeholder = "Pilih genre game yang diinginkan",
     label_visibility = "collapsed",
     on_change = genre_change
