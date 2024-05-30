@@ -7,8 +7,8 @@ genres = ["Racing", "Adventure", "Sports", "Strategy", "Casual", "RPG", "Simulat
 num_of_page = 1 
 index = 0
 
-def genre_change():
-  #st.session_state['list_genre'] = options
+def genre_change(genre_options):
+  st.session_state['list_genre'] = genre_options
   st.session_state['index'] = 0
   st.session_state['page'] = 1
   st.session_state['next'] = 1
@@ -86,17 +86,17 @@ def back_func():
 if 'list_genre' not in st.session_state:
   st.session_state['list_genre'] = None
 
-options = st.multiselect(
+genre_options = st.multiselect(
   "What are your favorite colors",
   options = genres,
   default = st.session_state['list_genre'],
   placeholder = "Pilih genre game yang diinginkan",
   label_visibility = "collapsed",
-  on_change = genre_change
+  on_change = genre_change,
+  args = genre_options
 )
 
 list_popular = genre_filtering(options)
-st.session_state['list_genre'] = options
 
 st.title("Daftar Game")
 row1 = st.empty()
