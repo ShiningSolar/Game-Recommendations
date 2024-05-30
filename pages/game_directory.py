@@ -93,7 +93,7 @@ genre_options = st.multiselect(
   placeholder = "Pilih genre game yang diinginkan",
   label_visibility = "collapsed",
   on_change = genre_change,
-  args = genre_options
+  args = default
 )
 
 list_popular = genre_filtering(options)
