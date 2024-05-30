@@ -99,16 +99,10 @@ if 'list_genre' not in st.session_state :
     on_change = genre_change
   )
   st.write(st.session_state['list_genre'])
-elif 'list_genre' in st.session_state :
+
+if 'list_genre' in st.session_state :
   selected_genres = st.session_state['list_genre']
-  genre_options = multiselect.multiselect(
-    "What are your favorite colors",
-    options = genres,
-    default = selected_genres,
-    placeholder = "Pilih genre game yang diinginkan",
-    label_visibility = "collapsed",
-    on_change = genre_change
-  )
+  genre_options = selected_genres
   st.session_state['list_genre'] = genre_options
   selected_genres = st.session_state['list_genre']
   st.write(st.session_state['list_genre'])
