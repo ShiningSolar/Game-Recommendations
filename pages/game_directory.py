@@ -98,7 +98,7 @@ elif 'list_genre' in st.session_state :
   st.session_state['list_genre'] = genre_options
   selected_genres = st.session_state['list_genre']
 
-list_popular = genre_filtering(selected_genres)
+list_popular = genre_filtering(st.session_state['list_genre'])
 #else :
 #  genre_options = st.multiselect(
 #    "What are your favorite colors",
