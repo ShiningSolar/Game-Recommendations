@@ -89,15 +89,16 @@ if 'list_genre' not in st.session_state:
   
 if 'list_genre' in st.session_state:
   selected_genres = st.session_state['list_genre']
+  genre_options = st.multiselect(
+    "What are your favorite colors",
+    options = genres,
+    default = selected_genres,
+    placeholder = "Pilih genre game yang diinginkan",
+    label_visibility = "collapsed",
+    on_change = genre_change
+  )
+  st.session_state['list_genre'] = genre_options
 
-genre_options = st.multiselect(
-  "What are your favorite colors",
-  options = genres,
-  default = selected_genres,
-  placeholder = "Pilih genre game yang diinginkan",
-  label_visibility = "collapsed",
-  on_change = genre_change
-)
 #else :
 #  genre_options = st.multiselect(
 #    "What are your favorite colors",
@@ -106,12 +107,10 @@ genre_options = st.multiselect(
 #    placeholder = "Pilih genre game yang diinginkan",
 #    label_visibility = "collapsed",
 #    on_change = genre_change
-#  )
-  
-st.session_state['list_genre'] = genre_options
+#  ) 
+
 selected_genres = st.session_state['list_genre']
 list_popular = genre_filtering(genre_options)
-
 
 st.title("Daftar Game")
 row1 = st.empty()
