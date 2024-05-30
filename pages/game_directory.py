@@ -84,7 +84,7 @@ def back_func():
   st.session_state['next_button_state'] = False
  
 if 'list_genre' not in st.session_state :
-  st.session_state['list_genre'] = None
+  st.session_state['list_genre'] = []
 elif 'list_genre' in st.session_state :
   selected_genres = st.session_state['list_genre']
   genre_options = st.multiselect(
