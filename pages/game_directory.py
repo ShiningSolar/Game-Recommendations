@@ -8,7 +8,7 @@ num_of_page = 1
 index = 0
 
 def genre_change():
-  st.session_state['list_genre'] = options
+  #st.session_state['list_genre'] = options
   st.session_state['index'] = 0
   st.session_state['page'] = 1
   st.session_state['next'] = 1
@@ -96,7 +96,7 @@ options = st.multiselect(
 )
 
 list_popular = genre_filtering(options)
-
+st.session_state['list_genre'] = options
 
 st.title("Daftar Game")
 row1 = st.empty()
