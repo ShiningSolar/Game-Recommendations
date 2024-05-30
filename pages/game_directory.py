@@ -28,16 +28,16 @@ if st.session_state['details_page'] == True:
     del st.session_state[key]
   st.switch_page("pages/game_details.py")
   
-def show_data(i):
+def show_data(index):
   a = row1.columns(3)
   b = row2.columns(3)
   c = row3.columns(3)
   d = row4.columns(3)
   
   if 'index' not in st.session_state:
-    st.session_state['index'] = str(i)
+    st.session_state['index'] = str(index)
   
-  index = int(st.session_state['index'])
+  #index = int(st.session_state['index'])
   
   for col in a + b + c + d:
     if index < len(list_popular):
@@ -51,8 +51,8 @@ def show_data(i):
       st.session_state['next_button_state'] = True
       break
 
-  i = index
-  st.session_state['index'] = str(i)
+  #i = index
+  st.session_state['index'] = str(index)
 
 def next_func():
   if 'next' not in st.session_state:
@@ -64,6 +64,7 @@ def next_func():
     st.session_state['next'] = num_of_page + 1
     index = int( st.session_state['index'])
     st.session_state['page'] = st.session_state['next']
+  st.session_state['back'] = st.session_state['page']
   st.session_state['back_button_state'] = False
 
 
@@ -76,6 +77,7 @@ def back_func():
   index = index - 24 + ((12 * num_of_page) - index)
   st.session_state['index'] = str(index)
   st.session_state['page'] = st.session_state['back']
+  st.session_state['next'] = st.session_state['page']
   st.session_state['next_button_state'] = False
  
 
@@ -107,12 +109,10 @@ if 'page' not in st.session_state :
   st.session_state['back_button_state'] = True
   st.session_state['next_button_state'] = False
 elif 'page' in st.session_state :
-#  st.session_state['next'] = st.session_state['page']
-#  st.session_state['back'] = st.session_state['page']
-#  index = int(st.session_state['index'])
+  index = int(st.session_state['index'])
+  #if st.session_state['next
   page_text.markdown(f"""{st.session_state['page']}""")
-  st.session_state['index'] = 0
-  show_data(0)
+  show_data(index)
   
 if st.session_state.get('next') :
   page_text.empty()
