@@ -110,7 +110,7 @@ if 'list_genre' in st.session_state:
 #  ) 
 
 selected_genres = st.session_state['list_genre']
-list_popular = genre_filtering(genre_options)
+list_popular = genre_filtering(selected_genres)
 
 st.title("Daftar Game")
 row1 = st.empty()
