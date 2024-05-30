@@ -83,7 +83,7 @@ def back_func():
   st.session_state['next_button_state'] = False
  
 if 'list_genre' not in st.session_state:
-  st.session_state['list_genre'] = 'Simulation'
+  st.session_state['list_genre'] = None
   genre_options = st.multiselect(
     "What are your favorite colors",
     options = genres,
