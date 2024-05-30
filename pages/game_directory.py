@@ -8,6 +8,8 @@ num_of_page = 1
 index = 0
 
 def genre_change():
+  selected_genres = st.session_state['list_genre']
+  st.session_state['list_genre'] = selected_genres
   st.session_state['index'] = 0
   st.session_state['page'] = 1
   st.session_state['next'] = 1
@@ -107,6 +109,7 @@ genre_options = st.multiselect(
 #  )
   
 st.session_state['list_genre'] = genre_options
+selected_genres = st.session_state['list_genre']
 list_popular = genre_filtering(genre_options)
 
 
