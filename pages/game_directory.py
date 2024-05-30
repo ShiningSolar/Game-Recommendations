@@ -7,8 +7,8 @@ genres = ["Racing", "Adventure", "Sports", "Strategy", "Casual", "RPG", "Simulat
 num_of_page = 1 
 index = 0
 
-def genre_change(genre_options):
-  st.session_state['list_genre'] = genre_options
+def genre_change():
+  #st.session_state['list_genre'] = genre_options
   st.session_state['index'] = 0
   st.session_state['page'] = 1
   st.session_state['next'] = 1
@@ -84,7 +84,7 @@ def back_func():
   st.session_state['next_button_state'] = False
  
 if 'list_genre' not in st.session_state:
-  st.session_state['list_genre'] = None
+  st.session_state['list_genre'] = 'Simulation'
 
 genre_options = st.multiselect(
   "What are your favorite colors",
@@ -92,8 +92,7 @@ genre_options = st.multiselect(
   default = st.session_state['list_genre'],
   placeholder = "Pilih genre game yang diinginkan",
   label_visibility = "collapsed",
-  on_change = genre_change,
-  args = default
+  on_change = genre_change
 )
 
 list_popular = genre_filtering(options)
