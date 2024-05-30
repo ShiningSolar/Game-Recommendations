@@ -8,7 +8,7 @@ num_of_page = 1
 index = 0
 
 def genre_change():
-  #st.session_state['list_genre'] = genre_options
+  st.session_state['list_genre'] = genre_options
   st.session_state['index'] = 0
   st.session_state['page'] = 1
   st.session_state['next'] = 1
