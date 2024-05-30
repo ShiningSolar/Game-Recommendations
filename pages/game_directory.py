@@ -86,7 +86,8 @@ def back_func():
  
 if 'list_genre' not in st.session_state :
   st.session_state['list_genre'] = None
-elif 'list_genre' in st.session_state :
+
+if 'list_genre' in st.session_state :
   selected_genres = st.session_state['list_genre']
   genre_options = st.multiselect(
     "What are your favorite colors",
@@ -127,8 +128,7 @@ if 'page' not in st.session_state :
   page_text.markdown(f"""{num_of_page}""")
   st.session_state['back_button_state'] = True
   st.session_state['next_button_state'] = False
-
-if 'page' in st.session_state :
+elif 'page' in st.session_state :
   x = int(st.session_state['page'])
   index = (12*x)-12
   #if st.session_state['next
