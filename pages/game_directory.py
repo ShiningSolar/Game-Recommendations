@@ -85,15 +85,24 @@ def back_func():
  
 if 'list_genre' not in st.session_state:
   st.session_state['list_genre'] = 'Simulation'
-
-genre_options = st.multiselect(
-  "What are your favorite colors",
-  options = genres,
-  default = st.session_state['list_genre'],
-  placeholder = "Pilih genre game yang diinginkan",
-  label_visibility = "collapsed",
-  on_change = genre_change
-)
+  genre_options = st.multiselect(
+    "What are your favorite colors",
+    options = genres,
+    default = st.session_state['list_genre'],
+    placeholder = "Pilih genre game yang diinginkan",
+    label_visibility = "collapsed",
+    on_change = genre_change
+  )
+else :
+  genre_options = st.multiselect(
+    "What are your favorite colors",
+    options = genres,
+    default = st.session_state['list_genre'],
+    placeholder = "Pilih genre game yang diinginkan",
+    label_visibility = "collapsed",
+    on_change = genre_change
+  )
+  
 
 list_popular = genre_filtering(genre_options)
 
