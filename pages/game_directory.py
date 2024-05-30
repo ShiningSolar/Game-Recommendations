@@ -86,18 +86,19 @@ def back_func():
   st.session_state['next_button_state'] = False
 
 multiselect = st.empty()
-
-if 'list_genre' not in st.session_state :
-  st.session_state['list_genre'] = []
-  selected_genres = st.session_state['list_genre']
-  genre_options = multiselect.multiselect(
+genre_options = multiselect.multiselect(
     "What are your favorite colors",
     options = genres,
     default = selected_genres,
     placeholder = "Pilih genre game yang diinginkan",
     label_visibility = "collapsed",
     on_change = genre_change
-  )
+)
+
+if 'list_genre' not in st.session_state :
+  st.session_state['list_genre'] = []
+  selected_genres = st.session_state['list_genre']
+  genre_options = selected_genres
   st.write(st.session_state['list_genre'])
 
 if 'list_genre' in st.session_state :
