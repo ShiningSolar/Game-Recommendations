@@ -88,7 +88,6 @@ multiselect = st.empty()
 if 'list_genre' not in st.session_state :
   st.session_state['list_genre'] = []
   selected_genres = st.session_state['list_genre']
-  st.write(selected_genres)
   genre_options = multiselect.multiselect(
     "What are your favorite colors",
     options = genres,
@@ -97,9 +96,9 @@ if 'list_genre' not in st.session_state :
     label_visibility = "collapsed",
     on_change = genre_change
   )
+  st.write(st.session_state['list_genre'])
 elif 'list_genre' in st.session_state :
   selected_genres = st.session_state['list_genre']
-  st.write(selected_genres)
   genre_options = multiselect.multiselect(
     "What are your favorite colors",
     options = genres,
@@ -110,6 +109,7 @@ elif 'list_genre' in st.session_state :
   )
   st.session_state['list_genre'] = genre_options
   selected_genres = st.session_state['list_genre']
+  st.write(st.session_state['list_genre'])
 
 list_popular = genre_filtering(st.session_state['list_genre'])
 #else :
