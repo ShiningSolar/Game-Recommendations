@@ -97,6 +97,8 @@ elif 'list_genre' in st.session_state :
     on_change = genre_change
   )
   st.session_state['list_genre'] = genre_options
+  selected_genres = st.session_state['list_genre']
+  list_popular = genre_filtering(selected_genres)
 
 #else :
 #  genre_options = st.multiselect(
@@ -108,8 +110,7 @@ elif 'list_genre' in st.session_state :
 #    on_change = genre_change
 #  ) 
 
-selected_genres = st.session_state['list_genre']
-list_popular = genre_filtering(selected_genres)
+
 
 st.title("Daftar Game")
 row1 = st.empty()
