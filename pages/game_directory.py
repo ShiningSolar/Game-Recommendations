@@ -107,7 +107,7 @@ genre_options = multiselect.multiselect(
     on_change = genre_change
 )
 
-if len(st.session_state.list_genre) =! 0 :
+if len(st.session_state.list_genre) != 0 :
   genre_option = st.session_state.list_genre
   st.session_state['list_genre'] = genre_options
   st.write(st.session_state['list_genre'])
