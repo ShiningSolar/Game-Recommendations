@@ -109,7 +109,8 @@ if 'page' not in st.session_state :
   st.session_state['back_button_state'] = True
   st.session_state['next_button_state'] = False
 elif 'page' in st.session_state :
-  index = int(st.session_state['index'])
+  x = int(st.session_state['page'])
+  index = (12*x)-12
   #if st.session_state['next
   page_text.markdown(f"""{st.session_state['page']}""")
   show_data(index)
