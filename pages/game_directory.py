@@ -8,6 +8,7 @@ num_of_page = 1
 index = 0
 
 def genre_change():
+  st.session_state['list_genre'] = options
   st.session_state['index'] = 0
   st.session_state['page'] = 1
   st.session_state['next'] = 1
@@ -82,11 +83,13 @@ def back_func():
   st.session_state['next'] = st.session_state['page']
   st.session_state['next_button_state'] = False
  
+if 'list_genre' not in st.session_state:
+  st.session_state['list_genre'] = None
 
 options = st.multiselect(
   "What are your favorite colors",
   options = genres,
-  default = None,
+  default = st.session_state['list_genre'],
   placeholder = "Pilih genre game yang diinginkan",
   label_visibility = "collapsed",
   on_change = genre_change
