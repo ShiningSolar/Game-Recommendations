@@ -121,9 +121,5 @@ if st.session_state.get('back') :
 
 back_button.button('back', on_click = back_func, disabled = st.session_state['back_button_state'])
 next_button.button('next', on_click = next_func, disabled = st.session_state['next_button_state'])
-    
 
-st.session_state
-
-#how to pevent index terus betambah tanpa mengklik apapun
-#change var i to var index in show_data()
+#st.session_state
