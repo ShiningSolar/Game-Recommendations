@@ -9,6 +9,12 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="auto"
 )
+def button_details():
+    if popover.button('view more', use_container_width = True):
+        st.query_params.game_name = title
+        st.switch_page("pages/game_details.py")
+    
+
 @st.cache_data
 def view(game_name):
     recommendations = hybrid_recommendation(game_name)
@@ -69,9 +75,6 @@ def view(game_name):
             cols3 = popover.columns([1, 3])
             cols3[0].markdown('**Website :**')
             cols3[1].page_link(website, label="go to website", icon="🌎")
-        if popover.button('view more', use_container_width = True):
-            st.query_params.game_name = title
-            #st.switch_page("pages/game_details.py")
         index = index + 1
 
 
