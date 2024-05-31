@@ -107,13 +107,15 @@ genre_options = st.multiselect(
     on_change = genre_change
 )
 
-if len(st.session_state.list_genre) != 0 :
+#if len(st.session_state.list_genre) != 0 :
   #genre_option = st.session_state.list_genre
-  st.session_state['list_genre'] = genre_options
-  st.write('inside len')
-  st.write(st.session_state['list_genre'])
+  #st.session_state['list_genre'] = genre_options
+  #st.write('inside len')
+  #st.write(st.session_state['list_genre'])
 
 st.session_state['list_genre'] = genre_options
+st.write('outside')
+t.write(st.session_state['list_genre'])
 
 list_popular = genre_filtering(st.session_state['list_genre'])
 #else :
