@@ -8,6 +8,7 @@ num_of_page = 1
 index = 0
 
 def genre_change():
+  st.session_state.list_genre = st.session_state.temp_list_genre
   st.write('inside genre change')
   st.write(st.session_state['list_genre'])
   st.session_state['index'] = 0
@@ -50,7 +51,6 @@ def show_data(index):
       title = list_popular.loc[index,'title']
       cont.image(list_popular.loc[index,'header_image'])
       cont.button(title, on_click = change_page, args = [title], use_container_width = True)
-        
       index = index + 1
     else :
       st.session_state['next_button_state'] = True
@@ -99,12 +99,13 @@ if 'list_genre' not in st.session_state :
 
 #multiselect = st.empty()
 genre_options = st.multiselect(
-    "What are your favorite colors",
-    options = genres,
-    #default = st.session_state['list_genre'],
-    placeholder = "Pilih genre game yang diinginkan",
-    label_visibility = "collapsed",
-    on_change = genre_change
+  "What are your favorite colors",
+  options = genres,
+  key = temp_list_genre,
+  default = st.session_state['list_genre'],
+  placeholder = "Pilih genre game yang diinginkan",
+  label_visibility = "collapsed",
+  on_change = genre_change
 )
 #genre_options = genre_options
 
