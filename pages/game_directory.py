@@ -108,8 +108,9 @@ genre_options = st.multiselect(
 )
 
 if len(st.session_state.list_genre) != 0 :
-  genre_option = st.session_state.list_genre
+  #genre_option = st.session_state.list_genre
   st.session_state['list_genre'] = genre_options
+  st.write('inside len')
   st.write(st.session_state['list_genre'])
 
 st.session_state['list_genre'] = genre_options
