@@ -69,7 +69,7 @@ def view(game_name):
                 cols3 = st.columns([1, 3])
                 cols3[0].markdown('**Website :**')
                 cols3[1].page_link(website, label="go to website", icon="🌎")
-            if st.button('details', use_container_width = True):
+            if st.button('view more', use_container_width = True):
                 st.query_params.game_name = title
                 st.switch_page("pages/game_details.py")
         index = index + 1
