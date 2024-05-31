@@ -97,6 +97,7 @@ if 'list_genre' not in st.session_state :
   #selected_genres = st.session_state['list_genre']
   #st.write(st.session_state['list_genre'])
 
+st.session_state.temp_list_genre = st.session_state.list_genre
 #multiselect = st.empty()
 genre_options = st.multiselect(
   "What are your favorite colors",
