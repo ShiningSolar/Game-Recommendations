@@ -75,7 +75,7 @@ def view(game_name):
             cols3 = popover.columns([1, 3])
             cols3[0].markdown('**Website :**')
             cols3[1].page_link(website, label="go to website", icon="🌎")
-        button_details(popover, title)
+        #button_details(popover, title)
         index = index + 1
 
 
