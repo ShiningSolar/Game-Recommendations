@@ -101,11 +101,12 @@ if 'list_genre' not in st.session_state :
 genre_options = st.multiselect(
     "What are your favorite colors",
     options = genres,
-    default = st.session_state['list_genre'],
+    #default = st.session_state['list_genre'],
     placeholder = "Pilih genre game yang diinginkan",
     label_visibility = "collapsed",
     on_change = genre_change
 )
+#genre_options = genre_options
 
 #if len(st.session_state.list_genre) != 0 :
   #genre_option = st.session_state.list_genre
