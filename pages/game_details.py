@@ -58,20 +58,20 @@ def view(game_name):
         tanggal = str(data.loc[index, 'date_release'])
         website = data.loc[index, 'website']
         #cont.text(data.loc[index,'title'])
-        with cont.popover(title, use_container_width = True):
-            cols1 = st.columns([1, 3])
-            cols2 = st.columns([1, 3])
-            cols1[0].markdown('**Tanggal rilis :**')
-            cols1[1].markdown(tanggal[:10])
-            cols2[0].markdown('**Genre :**')
-            cols2[1].markdown(data.loc[index, 'genres'])
-            if website != 'Unknown':
-                cols3 = st.columns([1, 3])
-                cols3[0].markdown('**Website :**')
-                cols3[1].page_link(website, label="go to website", icon="🌎")
-            #if st.button('view more', use_container_width = True):
-            #    st.query_params.game_name = title
-            #    st.switch_page("pages/game_details.py")
+        popover = cont.popover(title, use_container_width = True)
+        cols1 = popover.columns([1, 3])
+        cols2 = popover.columns([1, 3])
+        cols1[0].markdown('**Tanggal rilis :**')
+        cols1[1].markdown(tanggal[:10])
+        cols2[0].markdown('**Genre :**')
+        cols2[1].markdown(data.loc[index, 'genres'])
+        if website != 'Unknown':
+            cols3 = st.columns([1, 3])
+            cols3[0].markdown('**Website :**')
+            cols3[1].page_link(website, label="go to website", icon="🌎")
+        if popover.button('view more', use_container_width = True):
+            st.query_params.game_name = title
+            st.switch_page("pages/game_details.py")
         index = index + 1
 
 
