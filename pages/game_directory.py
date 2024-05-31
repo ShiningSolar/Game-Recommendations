@@ -3,14 +3,11 @@ import pandas as pd
 from func_var import genre_filtering
 
 genres = ["Racing", "Adventure", "Sports", "Strategy", "Casual", "RPG", "Simulation", "Action", "Indie"]
-
 num_of_page = 1 
 index = 0
 
 def genre_change():
   st.session_state.list_genre = st.session_state.temp_list_genre
-  st.write('inside genre change')
-  st.write(st.session_state['list_genre'])
   st.session_state['index'] = 0
   st.session_state['page'] = 1
   st.session_state['next'] = 1
@@ -20,13 +17,11 @@ def genre_change():
   return
 
 def change_page(name):
-  st.write(name)
   st.session_state['name'] = name
   st.session_state['details_page'] = True
-
+  
 if 'details_page' not in st.session_state :
   st.session_state['details_page'] = False
-
 if st.session_state['details_page'] == True:
   st.query_params.game_name = st.session_state['name']
   st.session_state['details_page'] = False
@@ -39,12 +34,8 @@ def show_data(index):
   b = row2.columns(3)
   c = row3.columns(3)
   d = row4.columns(3)
-  
   if 'index' not in st.session_state:
     st.session_state['index'] = str(index)
-  
-  #index = int(st.session_state['index'])
-  
   for col in a + b + c + d:
     if index < len(list_popular):
       cont = col.container(border = True)
@@ -54,9 +45,7 @@ def show_data(index):
       index = index + 1
     else :
       st.session_state['next_button_state'] = True
-      break
-
-  #i = index
+      break 
   st.session_state['index'] = str(index)
 
 def next_func():
@@ -71,8 +60,7 @@ def next_func():
     st.session_state['page'] = st.session_state['next']
   st.session_state['back'] = st.session_state['page']
   st.session_state['back_button_state'] = False
-
-
+  
 def back_func():
   num_of_page = st.session_state['page']
   st.session_state['back'] = num_of_page -1
@@ -87,19 +75,9 @@ def back_func():
 
 if 'list_genre' not in st.session_state :
   st.session_state['list_genre'] = []
-  #selected_genres = st.session_state['list_genre']
-  #genre_options = selected_genres
-  #st.write(st.session_state['list_genre'])
-#elif 'list_genre' in st.session_state :
-  #selected_genres = st.session_state['list_genre']
-  #genre_options = selected_genres
-  #st.session_state['list_genre'] = genre_options
-  #selected_genres = st.session_state['list_genre']
-  #st.write(st.session_state['list_genre'])
 
 st.session_state['temp_list_genre'] = st.session_state['list_genre']
 
-#multiselect = st.empty()
 genre_options = st.multiselect(
   "What are your favorite colors",
   options = genres,
@@ -109,37 +87,15 @@ genre_options = st.multiselect(
   label_visibility = "collapsed",
   on_change = genre_change
 )
-#genre_options = genre_options
-
-#if len(st.session_state.list_genre) != 0 :
-  #genre_option = st.session_state.list_genre
-  #st.session_state['list_genre'] = genre_options
-  #st.write('inside len')
-  #st.write(st.session_state['list_genre'])
 
 st.session_state['list_genre'] = genre_options
-st.write('outside')
-st.write(st.session_state['list_genre'])
 
 list_popular = genre_filtering(st.session_state['list_genre'])
-#else :
-#  genre_options = st.multiselect(
-#    "What are your favorite colors",
-#    options = genres,
-#    default = st.session_state['list_genre'],
-#    placeholder = "Pilih genre game yang diinginkan",
-#    label_visibility = "collapsed",
-#    on_change = genre_change
-#  ) 
-
-
-
 st.title("Daftar Game")
 row1 = st.empty()
 row2 = st.empty()
 row3 = st.empty()
 row4 = st.empty()   
-
 buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,1,1,3])
 page_text = page_number.empty()
 
@@ -159,7 +115,6 @@ elif 'page' in st.session_state :
 if st.session_state.get('next') :
   page_text.empty()
   page_text.markdown(f"""{st.session_state['next']}""")
-
 if st.session_state.get('back') :
   page_text.empty()
   page_text.markdown(f"""{st.session_state['back']}""")
