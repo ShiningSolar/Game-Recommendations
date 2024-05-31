@@ -66,12 +66,12 @@ def view(game_name):
         cols2[0].markdown('**Genre :**')
         cols2[1].markdown(data.loc[index, 'genres'])
         if website != 'Unknown':
-            cols3 = st.columns([1, 3])
+            cols3 = popover.columns([1, 3])
             cols3[0].markdown('**Website :**')
             cols3[1].page_link(website, label="go to website", icon="🌎")
         if popover.button('view more', use_container_width = True):
             st.query_params.game_name = title
-            st.switch_page("pages/game_details.py")
+            #st.switch_page("pages/game_details.py")
         index = index + 1
 
 
