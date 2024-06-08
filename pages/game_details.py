@@ -20,9 +20,9 @@ def button_details(popover, title):
 def view(game_name):
     recommendations = hybrid_recommendation(game_name)
     data = recommendations
-    genres = details.loc['genres']
-    
+
     details = selected_game_details(game_name)
+    genres = details.loc['genres']
     #st.dataframe(details)
     tanggal = str(details.loc['date_release'])
     website = details.loc['website']
