@@ -2,6 +2,7 @@ import streamlit as st
 #from app import selection
 from func_var import hybrid_recommendation
 from func_var import selected_game_details
+from streamlit_pills import pills
 
 st.set_page_config(
     page_title="Game Details",
@@ -19,7 +20,7 @@ def button_details(popover, title):
 def view(game_name):
     recommendations = hybrid_recommendation(game_name)
     data = recommendations
-    #genres = details.loc['genres']
+    genres = details.loc['genres']
     
     details = selected_game_details(game_name)
     #st.dataframe(details)
@@ -34,8 +35,9 @@ def view(game_name):
     cols1[0].markdown('**Tanggal rilis :**')
     cols1[1].markdown(tanggal[:10])
     cols2[0].markdown('**Genre :**')
-    cols2[1].markdown(details.loc['genres'])
-    #selected = cols2[1].pills("Select a category", genres, label_visibility = "collapsed" )
+    #cols2[1].markdown(details.loc['genres'])
+    selected = cols2[1].pills("Select a category", genres, label_visibility = "collapsed" )
+    st.write("You selected:", selected)
     if website != 'Unknown':
         cols3 = con.columns([1, 3])
         cols3[0].markdown('**Website :**')
