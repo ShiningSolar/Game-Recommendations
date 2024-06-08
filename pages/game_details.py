@@ -37,7 +37,7 @@ def view(game_name):
     cols2[0].markdown('**Genre :**')
     #cols2[1].markdown(details.loc['genres'])
     #with cols2[1]:
-    genre_pill = cols2[1].multiselect(("Select a category", genres, default = genres, label_visibility = "collapsed", key = 'genre_selected', disabled = True)
+    genre_pill = cols2[1].multiselect("Select a category", genres, default = genres, label_visibility = "collapsed", key = 'genre_selected', disabled = True)
     if st.session_state.get('genre_selected'):
         st.write("You selected:", genre_pill)
         st.session_state['list_genre'] = genre_pill
