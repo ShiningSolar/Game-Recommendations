@@ -37,7 +37,7 @@ def view(game_name):
     cols2[0].markdown('**Genre :**')
     #cols2[1].markdown(details.loc['genres'])
     with cols2[1]:
-        selected = pills("Select a category", genres, label_visibility = "collapsed" )
+        selected = pills("Select a category", genres, index = None, label_visibility = "collapsed" )
     st.write("You selected:", selected)
     if website != 'Unknown':
         cols3 = con.columns([1, 3])
