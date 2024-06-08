@@ -40,6 +40,8 @@ def view(game_name):
         genre_pill = pills("Select a category", genres, index = None, label_visibility = "collapsed", key = 'genre_selected')
         if st.session_state.get('genre_selected'):
             st.write("You selected:", genre_pill)
+            st.session_state['list_genre'] = genre_pill
+            st.switch_page("pages/game_directory.py")
     
     if website != 'Unknown':
         cols3 = con.columns([1, 3])
