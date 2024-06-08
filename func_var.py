@@ -72,8 +72,8 @@ def genre_filtering(list_genre = []):
    df = games
    if len(list_genre) != 0:
       for genre in list_genre:
-         genres_games = df[df['genres'].str.contains(genre, case=False)]
-         df = genres_games
+         genres_games = df[df['genres'].apply(lambda x: all(item in x for item in list_genre))]
+         #df = genres_games
       filtered_games = sorted_score_df(genres_games).reset_index(drop = True)
    else :
       filtered_games = df.sort_values('title', ascending=True).reset_index(drop = True)
