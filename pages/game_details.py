@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit_antd_components as sac
 from func_var import hybrid_recommendation
 from func_var import selected_game_details
 from streamlit_pills import pills
