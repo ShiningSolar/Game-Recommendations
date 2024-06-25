@@ -93,7 +93,7 @@ st.session_state['temp_list_genre'] = st.session_state['list_genre']
 #)
 #st.session_state['list_genre'] = genre_options
 
-sac.cascader(items=genres, index=st.session_state['list_genre'], placeholder='Pilih genre game yang diinginkan', color='indigo', multiple=True, search=True, clear=True, key = 'temp_list_genre', on_change = genre_change)
+genre_options = sac.cascader(items=genres, index=st.session_state['list_genre'], placeholder='Pilih genre game yang diinginkan', color='indigo', multiple=True, search=True, clear=True, key = 'temp_list_genre', on_change = genre_change)
 st.session_state['list_genre'] = genre_options
 
 list_popular = genre_filtering(st.session_state['list_genre'])
