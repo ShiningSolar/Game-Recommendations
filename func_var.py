@@ -30,7 +30,7 @@ def get_content_based_similarities(game_id):
 def get_collaborative_similarities(game_id, k=10):
    # Mendapatkan index game dengan menyamakan 'app_id' dengan nilai game_id
    game_idx = games[games['app_id'] == game_id].index[0]
-   game_vector = urm_sparse[game_idx, :]
+   game_vector = games_sparse[game_idx, :]
     
    # Mencari tetangga terdekat
    distances, indices = knn.kneighbors(game_vector, n_neighbors=k)
