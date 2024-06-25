@@ -5,20 +5,16 @@ import streamlit_antd_components as sac
 from func_var import games_title
 from func_var import most_popular_games
 
+app_page = st.Page("app.py", title="Halaman Utama", icon="🎮")
 game_details_page = st.Page("pages/game_details.py", title="Rekomendasi Game", icon="🎮")
 game_directory_page = st.Page("pages/game_directory.py", title="Katalog Game", icon="📃")
 
-pg = st.navigation([game_details_page, game_directory_page])
+pg = st.navigation([app_page, game_details_page, game_directory_page])
 st.set_page_config(
     page_title="Halaman Utama",
     page_icon="🧊",
     layout="wide",
-    initial_sidebar_state="auto",
-    menu_items={
-        'Get Help': 'https://www.extremelycoolapp.com/help',
-        'Report a bug': "https://www.extremelycoolapp.com/bug",
-        'About': "# This is a header. This is an *extremely* cool app!"
-    }
+    initial_sidebar_state="auto"
 )
 pg.run()
 
