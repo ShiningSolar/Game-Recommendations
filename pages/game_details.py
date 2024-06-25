@@ -37,7 +37,7 @@ def detail_selected_game(game_name, details):
         sac.divider(label='Genre', align='center', color='gray')
         sac.buttons(genres, label='', index=None, align='center', radius='lg', gap='sm', variant='filled', color='dark', use_container_width=True)
         sac.divider(label='Tanggal Rilis', align='center', color='gray')
-        sac.chip(genres, align='center', color='dark', readonly=True, divider=True)
+        sac.chip(iems=genres, align='center', color='dark')
         
 
 def view(game_name):
