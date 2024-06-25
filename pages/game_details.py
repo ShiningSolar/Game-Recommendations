@@ -35,10 +35,9 @@ def detail_selected_game(game_name, details):
         st.image(details.loc['header_image'], use_column_width = True)
         st.header(details.loc['title'])
         sac.divider(label='Genre', align='center', color='gray')
-        sac.buttons(genres, label='', index=None, align='center', radius='lg', gap='sm', variant='filled', color='dark', use_container_width=True)
-        sac.divider(label='Tanggal Rilis', align='center', color='gray')
-        sac.chip(items=genres, align='center', color='dark')
-        
+        sac.buttons(genres, label='', index=None, align='center', size='sm', radius='lg', gap='sm', variant='filled', color='dark', use_container_width=True)
+        sac.divider(label='Tanggal Rilis', align='center', color='gray')    
+        sac.tags(genre, align='center', size='md')
 
 def view(game_name):
     recommendations = hybrid_recommendation(game_name)
