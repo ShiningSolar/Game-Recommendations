@@ -36,6 +36,9 @@ def detail_selected_game(game_name, details):
         st.header(details.loc['title'])
         sac.divider(label='Genre', align='center', color='gray')
         sac.buttons(genres, label='', index=None, align='center', radius='lg', gap='sm', variant='filled', color='dark', use_container_width=True)
+        sac.divider(label='Tanggal Rilis', align='center', color='gray')
+        sac.chip(items=genres, label='', index=0, align='center', color='dark', use_container_width=True, readonly=True, divider=True)
+        
 
 def view(game_name):
     recommendations = hybrid_recommendation(game_name)
