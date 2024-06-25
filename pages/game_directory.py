@@ -82,15 +82,15 @@ if 'list_genre' not in st.session_state :
 
 st.session_state['temp_list_genre'] = st.session_state['list_genre']
 
-genre_options = st.multiselect(
-  "What are your favorite colors",
-  options = genres,
-  key = "temp_list_genre",
-  default = st.session_state['list_genre'],
-  placeholder = "Pilih genre game yang diinginkan",
-  label_visibility = "collapsed",
-  on_change = genre_change
-)
+#genre_options = st.multiselect(
+#  "What are your favorite colors",
+#  options = genres,
+#  key = "temp_list_genre",
+#  default = st.session_state['list_genre'],
+#  placeholder = "Pilih genre game yang diinginkan",
+#  label_visibility = "collapsed",
+#  on_change = genre_change
+#)
 #st.session_state['list_genre'] = genre_options
 
 sac.cascader(items=genres, index=st.session_state['list_genre'], placeholder='Pilih genre game yang diinginkan', color='indigo', multiple=True, search=True, clear=True, key = 'temp_list_genre', on_change = genre_change)
