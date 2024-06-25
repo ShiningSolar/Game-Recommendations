@@ -17,10 +17,10 @@ def genre_change():
   #st.session_state['back_button_state'] = True
   return
 
-def pagination_change():
-  st.session_state.page = st.session_state.temp_page
+#def pagination_change():
+  #st.session_state.page = st.session_state.temp_page
   #st.session_state['index'] = 0
-  return
+  #return
 
 def change_page(name):
   st.session_state['name'] = name
@@ -104,8 +104,11 @@ row4 = st.empty()
 #buff1, back_button, page_number, next_button, buff2 = st.columns([3,1,1,1,3])
 #page_text = page_number.empty()
 
+pagination = sac.pagination(total=total_game, page_size=12, align='center', variant='filled', simple=True)
+st.session_state['page'] = pagination
+
 if 'page' not in st.session_state :
-  st.session_state['page'] = num_of_page
+  st.session_state['page'] = pagination
   show_data(index)
   #page_text.markdown(f"""{num_of_page}""")
   #st.session_state['back_button_state'] = True
@@ -124,10 +127,10 @@ elif 'page' in st.session_state :
 #  page_text.empty()
 #  page_text.markdown(f"""{st.session_state['back']}""")
 
-st.session_state['temp_page'] = st.session_state['page']
+#st.session_state['temp_page'] = st.session_state['page']
 #pagination
-pagination = sac.pagination(total=total_game, page_size=12, align='center', variant='filled', simple=True, on_change = pagination_change, key = "temp_page")
-st.session_state['page'] = pagination
+#pagination = sac.pagination(total=total_game, page_size=12, align='center', variant='filled', simple=True, on_change = pagination_change, key = "temp_page")
+#st.session_state['page'] = pagination
 
 #back_button.button('back', on_click = back_func, disabled = st.session_state['back_button_state'])
 #next_button.button('next', on_click = next_func, disabled = st.session_state['next_button_state'])
