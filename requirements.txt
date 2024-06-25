@@ -4,3 +4,4 @@ pandas
 scikit-learn
 numpy
 streamlit-pills
+streamlit-image-select
