@@ -37,7 +37,7 @@ def detail_selected_game(game_name, details):
         sac.divider(label='Genre', align='center', color='gray')
         sac.buttons(genres, label='', index=None, align='center', size='sm', radius='lg', gap='sm', variant='filled', color='dark', use_container_width=True)
         sac.divider(label='Tanggal Rilis', align='center', color='gray')    
-        sac.tags(genre, align='center', size='md')
+        sac.tags(genres, align='center', size='md')
 
 def view(game_name):
     recommendations = hybrid_recommendation(game_name)
