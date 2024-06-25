@@ -5,16 +5,16 @@ from func_var import selected_game_details
 from streamlit_pills import pills
 
 st.set_page_config(
-    page_title="Game Details",
+    page_title="Rekomendasi Game",
     page_icon="🎮",
     layout="wide",
     initial_sidebar_state="auto"
 )
+
 def button_details(popover, title):
     if popover.button('view more', key = title, use_container_width = True):
         st.query_params.game_name = title
         st.switch_page("pages/game_details.py")
-    
 
 #@st.cache_data
 def view(game_name):
@@ -23,7 +23,6 @@ def view(game_name):
 
     details = selected_game_details(game_name)
     genres = details.loc['genres']
-    #st.dataframe(details)
     tanggal = str(details.loc['date_release'])
     website = details.loc['website']
     screenshots = details.loc['screenshots']
@@ -35,14 +34,10 @@ def view(game_name):
     cols1[0].markdown('**Tanggal rilis :**')
     cols1[1].markdown(tanggal[:10])
     cols2[0].markdown('**Genre :**')
-    #cols2[1].markdown(details.loc['genres'])
-    #with cols2[1]:
     genre_pill = cols2[1].multiselect("Select a category", genres, default = genres, label_visibility = "collapsed", key = 'genre_selected', disabled = True)
     
     if st.session_state.genre_selected == True:
         st.write("You selected:", genre_pill)
-        #st.session_state['list_genre'] = genre_pill
-        #st.switch_page("pages/game_directory.py")
     
     if website != 'Unknown':
         cols3 = con.columns([1, 3])
@@ -50,14 +45,8 @@ def view(game_name):
         cols3[1].page_link(website, label="go to website", icon="🌎")
     with con.popover("About game", use_container_width  = True):
         st.write(details.loc['about'])
-    #con.markdown('**Screenshots :**')
     with con.popover("Screenshots", use_container_width  = True):
         st.write(screenshots)
-    #cols4 = con.columns([1, 1])
-    #con.markdown(screenshots)
-    #cols4[0].image(screenshots[0])
-    #cols4[1].image(screenshots[1])
-    
     
     st.header("Recommendations games")
     row1 = st.columns(2)
