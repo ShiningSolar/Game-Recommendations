@@ -16,7 +16,6 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="auto"
 )
-pg.run()
 
 
 with st.sidebar:
