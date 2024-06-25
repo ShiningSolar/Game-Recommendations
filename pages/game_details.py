@@ -23,15 +23,14 @@ def detail_selected_game(game_name, details):
     screenshots = details.loc['screenshots']
     ss_lenght = len(screenshots)
     con = st.container(border = True)
-    cols_con = con.columns([3, 2])
+    cols_con = con.columns([2, 3])
     with cols_con[1]:
         placeholder_screenshot = st.empty()
         #st.text(details.screenshots[0])
         placeholder_screenshot.image(screenshots[0], use_column_width = True)
-        img = image_select(
-        label = "screenshots",
-        images = screenshots)
-        
+        display_con = st.container(height=500, border = True)
+        with display_con:
+            img = image_select(label = "screenshots", images = screenshots)
     with cols_con[0]:
         st.image(details.loc['header_image'], use_column_width = True)
         st.title(details.loc['title'])
