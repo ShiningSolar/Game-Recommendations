@@ -16,37 +16,27 @@ def button_details(popover, title):
         st.query_params.game_name = title
         st.switch_page("pages/game_details.py")
 
-#@st.cache_data
+def detail_selected_game(game_name, details):
+    genres = details.loc['genres']
+    tanggal = str(details.loc['date_release'])
+    website = details.loc['website']
+    screenshots = details.loc['screenshots']
+    ss_lenght = len(screenshots)
+    con = st.container(border = True)
+    cols_con = con.columns([3, 1])
+    with cols_con[0]:
+        placeholder_screenshot = st.empty()
+        placeholder_screenshot.image(screenshots[0], use_column_width = True)
+    with cols_con[1]:
+        st.image(details.loc['header_image'], use_column_width = True)
+        st.title(details.loc['title'])
+
 def view(game_name):
     recommendations = hybrid_recommendation(game_name)
     data = recommendations
 
     details = selected_game_details(game_name)
-    genres = details.loc['genres']
-    tanggal = str(details.loc['date_release'])
-    website = details.loc['website']
-    screenshots = details.loc['screenshots']
-    con = st.container(border = True)
-    con.image(details.loc['header_image'], use_column_width = True)
-    con.title(details.loc['title'])
-    cols1 = con.columns([1, 3])
-    cols2 = con.columns([1, 3])
-    cols1[0].markdown('**Tanggal rilis :**')
-    cols1[1].markdown(tanggal[:10])
-    cols2[0].markdown('**Genre :**')
-    genre_pill = cols2[1].multiselect("Select a category", genres, default = genres, label_visibility = "collapsed", key = 'genre_selected', disabled = True)
-    
-    if st.session_state.genre_selected == True:
-        st.write("You selected:", genre_pill)
-    
-    if website != 'Unknown':
-        cols3 = con.columns([1, 3])
-        cols3[0].markdown('**Website :**')
-        cols3[1].page_link(website, label="go to website", icon="🌎")
-    with con.popover("About game", use_container_width  = True):
-        st.write(details.loc['about'])
-    with con.popover("Screenshots", use_container_width  = True):
-        st.write(screenshots)
+    detail_selected_game(game_name, details)
     
     st.header("Recommendations games")
     row1 = st.columns(2)
