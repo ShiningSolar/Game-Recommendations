@@ -27,6 +27,12 @@ def detail_selected_game(game_name, details):
         placeholder_screenshot = st.empty()
         st.text(details.screenshots[0])
         #placeholder_screenshot.image(screenshots[0], use_column_width = True)
+        csv = details.to_csv().encode("utf-8")
+        st.download_button(
+            label="Download data as CSV",
+            data=csv,
+            file_name="large_df.csv",
+            mime="text/csv",)
     with cols_con[1]:
         st.image(details.loc['header_image'], use_column_width = True)
         st.title(details.loc['title'])
