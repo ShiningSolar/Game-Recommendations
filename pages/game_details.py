@@ -2,6 +2,7 @@ import streamlit as st
 from func_var import hybrid_recommendation
 from func_var import selected_game_details
 from streamlit_pills import pills
+from streamlit_image_select import image_select
 
 st.set_page_config(
     page_title="Rekomendasi Game",
@@ -27,10 +28,9 @@ def detail_selected_game(game_name, details):
         placeholder_screenshot = st.empty()
         #st.text(details.screenshots[0])
         placeholder_screenshot.image(screenshots[0], use_column_width = True)
-        display_con = st.container(height=120)
-        display_cols = display_con.columns(ss_lenght)
-        for index, image in enumerate(screenshots):
-            display_cols[index].image(image)
+        img = image_select(
+        label = "screenshots",
+        images = screenshots)
         
     with cols_con[1]:
         st.image(details.loc['header_image'], use_column_width = True)
