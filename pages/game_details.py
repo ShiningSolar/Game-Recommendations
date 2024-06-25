@@ -26,16 +26,16 @@ def detail_selected_game(game_name, details):
     con = st.container(border = True)
     cols_con = con.columns([3, 2])
     with cols_con[0]:
-        placeholder_screenshot = st.empty()
-        #st.text(details.screenshots[0])
-        placeholder_screenshot.image(screenshots[0], use_column_width = True)
-        display_con = st.container(height=500, border = True)
-        with display_con:
+        with st.container(border = True):
+            placeholder_screenshot = st.empty()
+            placeholder_screenshot.image(screenshots[0], use_column_width = True)
+        with st.container(height=500, border = True):
             img = image_select(label = "screenshots", images = screenshots)
-    with cols_con[1]:
+    with cols_con[1].container(border=True):
         st.image(details.loc['header_image'], use_column_width = True)
         st.header(details.loc['title'])
-        sac.buttons(genres, label='', index=None, align='center', radius='lg', gap=3, variant='filled', color='dark')
+        sac.divider(label='Genre', align='center', color='gray')
+        sac.buttons(genres, label='', index=None, align='center', radius='lg', gap=6, variant='filled', color='dark')
 
 def view(game_name):
     recommendations = hybrid_recommendation(game_name)
