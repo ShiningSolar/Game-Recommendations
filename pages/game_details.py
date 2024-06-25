@@ -35,7 +35,7 @@ def detail_selected_game(game_name, details):
     with cols_con[1]:
         st.image(details.loc['header_image'], use_column_width = True)
         st.header(details.loc['title'])
-        sac.buttons(genres, label='', index=None, align='start', radius='lg', gap='xs', variant='filled', color='dark')
+        sac.buttons(genres, label='', index=None, align='center', radius='lg', gap=0, variant='filled', color='dark')
 
 def view(game_name):
     recommendations = hybrid_recommendation(game_name)
