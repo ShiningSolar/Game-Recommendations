@@ -3,6 +3,13 @@ import pandas as pd
 import streamlit_antd_components as sac
 from func_var import genre_filtering
 
+st.set_page_config(
+    page_title="Katalog Game",
+    page_icon="📃",
+    layout="wide",
+    initial_sidebar_state="auto"
+)
+
 genres = ["Racing", "Adventure", "Sports", "Strategy", "Casual", "RPG", "Simulation", "Action", "Indie"]
 num_of_page = 1 
 index = 0
