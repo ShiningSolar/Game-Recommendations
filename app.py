@@ -8,9 +8,15 @@ from func_var import hybrid_recommendation
 from func_var import most_popular_games
 
 st.set_page_config(
-    page_title="Home",
+    page_title="Ex-stream-ly Cool App",
+    page_icon="🧊",
     layout="wide",
-    initial_sidebar_state="auto"
+    initial_sidebar_state="auto",
+    menu_items={
+        'Get Help': 'https://www.extremelycoolapp.com/help',
+        'Report a bug': "https://www.extremelycoolapp.com/bug",
+        'About': "# This is a header. This is an *extremely* cool app!"
+    }
 )
 
 st.title("Aplikasi Rekomendasi Game")
