@@ -5,9 +5,9 @@ import streamlit_antd_components as sac
 from func_var import games_title
 from func_var import most_popular_games
 
-app_page = st.Page("app.py", title="Halaman Utama", icon="🎮")
-game_details_page = st.Page("pages/game_details.py", title="Rekomendasi Game", icon="🎮")
-game_directory_page = st.Page("pages/game_directory.py", title="Katalog Game", icon="📃")
+app_page = st.Page("🏠_Beranda.py", title="Beranda", icon="🏠")
+game_details_page = st.Page("pages/🎮_Rekomendasi_Game.py", title="Rekomendasi Game", icon="🎮")
+game_directory_page = st.Page("pages/📃_Katalog_Game.py", title="Katalog Game", icon="📃")
 
 #pg = st.navigation([app_page, game_details_page, game_directory_page])
 #pg.run()
