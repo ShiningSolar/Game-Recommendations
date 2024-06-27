@@ -2,7 +2,6 @@ import streamlit as st
 import streamlit_antd_components as sac
 from func_var import hybrid_recommendation
 from func_var import selected_game_details
-from streamlit_pills import pills
 from streamlit_image_select import image_select
 
 st.set_page_config(
@@ -60,7 +59,6 @@ def view(game_name):
         title = data.loc[index,'title']
         tanggal = str(data.loc[index, 'date_release'])
         website = data.loc[index, 'website']
-        #cont.text(data.loc[index,'title'])
         popover = cont.popover(title, use_container_width = True)
         cols1 = popover.columns([1, 3])
         cols2 = popover.columns([1, 3])
@@ -72,7 +70,6 @@ def view(game_name):
             cols3 = popover.columns([1, 3])
             cols3[0].markdown('**Website :**')
             cols3[1].page_link(website, label="go to website", icon="🌎")
-        #button_details(popover, title)
         index = index + 1
 
 
@@ -89,6 +86,5 @@ else:
     else:
         with st.container(border = True):
             st.header('🔴 PILIH GAME TERLEBIH DAHULU 🔴')
-            st.page_link("app.py", label="Halaman Utama", icon="🏠", use_container_width = True)
-            st.page_link("pages/game_directory.py", label="Katalog Game", icon="📃", use_container_width = True)
-
+            st.page_link("🏠_Beranda.py", label="Beranda", icon="🏠", use_container_width = True)
+            st.page_link("pages\📃_Katalog_Game.py", label="Katalog Game", icon="📃", use_container_width = True)

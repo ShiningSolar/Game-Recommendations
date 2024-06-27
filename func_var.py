@@ -101,11 +101,3 @@ def selected_game_details(game_name):
    game_idx = games[games['app_id'] == game_id].index[0]
    list_details = games.loc[game_idx]
    return list_details
-   
-def unused(cols, recommendations) :
-   index=0
-   for col in cols:
-      data = recommendations[index]
-      col.text(data[0])
-      col.image(data[1])
-      index= index + 1
