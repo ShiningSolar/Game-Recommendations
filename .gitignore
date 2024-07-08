@@ -1,2 +1,10 @@
 __pycache__/
+.pytest_cache
 .venv
+.vscode
+func_var.txt
+kaggle.py
+model_evaluation.py
+model_precision.py
+test_wb.py
+test_func.py
